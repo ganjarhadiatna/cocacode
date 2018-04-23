@@ -15,7 +15,7 @@
 	}
 	function removeBookmark(idbookmark, idstory) {
 		if (iduser === '') {
-			opAlert('open', 'Please login berfore you can save this story.');
+			opAlert('open', 'Please login berfore you can remove this design.');
 		} else {
 			$.ajax({
 				url: '{{ url("/box/remove/story") }}',
@@ -24,14 +24,14 @@
 			})
 			.done(function(data) {
 				if (data == 1) {
-					opAlert('open', 'Story has been removed from Box.');
+					opAlert('open', 'Design has been removed from Box.');
 					$('#bookmark-'+idstory).attr({
 						'onclick':"opSave('open','"+idstory+"')",
 						'title':'Save to box?'
 					});
 					$('#bookmark-'+idstory+' #ic').attr('class', 'far fa-lg fa-bookmark');
 				} else if (data == 0) {
-					opAlert('open', 'Failed to remove story from Box.');
+					opAlert('open', 'Failed to remove design from Box.');
 					$('#bookmark-'+idstory).attr({
 						'onclick':'removeBookmark('+idbookmark+')',
 						'title':'Remove from box?'
@@ -50,7 +50,7 @@
 	}
 	function addBookmark(idboxs) {
 		if (iduser === '') {
-			opAlert('open', 'Please login berfore you can save this story.');
+			opAlert('open', 'Please login berfore you can save this design.');
 		} else {
 			var idstory = $('#save-popup').attr('key');
 			$.ajax({
@@ -60,14 +60,14 @@
 			})
 			.done(function(data) {
 				if (data) {
-					opAlert('open', 'Story has been saved to Box.');
+					opAlert('open', 'Design has been saved to Box.');
 					$('#bookmark-'+idstory).attr({
 						'onclick':'removeBookmark('+data+','+idstory+')',
 						'title':'Remove from box?'
 					});
 					$('#bookmark-'+idstory+' #ic').attr('class', 'icn fas fa-lg fa-bookmark');
 				} else if (data == 0) {
-					opAlert('open', 'Failed to save story to Box.');
+					opAlert('open', 'Failed to save design to Box.');
 					$('#bookmark-'+idstory).attr({
 						'onclick':"opSave('open','"+idstory+"')",
 						'title':'Save to box?'
