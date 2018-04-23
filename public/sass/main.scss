@@ -106,7 +106,7 @@ a {
 	height: 60px;
 	background-color: $sek-color;
 	@media (max-width: $max-width) {
-		height: 100px;
+		height: 95px;
 	}
 	.place {
 		position: fixed;
@@ -159,11 +159,12 @@ a {
 				text-align: left;
 				@media (max-width: $max-width) {
 					position: fixed;
-					top: 60px;
+					top: 55px;
 					left: 0;
 					width: calc(100% - 20px);
 					padding: 7.5px 10px;
-					background-color: $min-color;
+					background-color: $sek-color;
+					@include bdr_bottom();
 				}
 				.main-search {
 					width: 450px;
