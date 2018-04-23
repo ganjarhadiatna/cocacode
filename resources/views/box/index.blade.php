@@ -11,9 +11,15 @@
 	<div class="sc-place">
 		<div class="sc-block">
 			<div class="sc-col-1">
-				<h1 class="ttl-head ctn-main-font ctn-big">
+				<h1 class="ttl-head ctn-main-font ctn-big padding-bottom-15px">
 					My Boxs
-				</h1>
+                </h1>
+                <a href="{{ url('/compose/box') }}">
+                    <button class="btn btn-sekunder-color btn-no-border">
+                        <span class="fas fa-lg fa-plus"></span>
+                        <span>Add Box</span>
+                    </button>
+                </a>
 			</div>
 		</div>
 	</div>

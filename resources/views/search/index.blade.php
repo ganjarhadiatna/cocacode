@@ -7,7 +7,7 @@
 <div class="sc-header">
 	<div class="sc-place pos-fix">
 		<div class="col-full">
-			<div class="place-search-tag col-full">
+			<div class="place-search-tag">
 				<div class="st-lef">
 					<div class="btn btn-circle btn-sekunder-color btn-no-border" onclick="toLeft()">
 						<span class="fa fa-lg fa-angle-left"></span>
@@ -37,7 +37,7 @@
 </div>
 @endif
 
-<div>
+<div class="padding-10px">
 	@if (count($topStory) == 0)
 		@include('main.post-empty')	
 	@else

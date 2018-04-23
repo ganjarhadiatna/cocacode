@@ -152,7 +152,7 @@
 				$('#write-story').val('');
 				opCreateStory('close');
 				close_progress();
-				window.location = '{{ url("/story/") }}'+'/'+data;
+				window.location = '{{ url("/design/") }}'+'/'+data;
 		   	}
 		   	//console.log(data);
 		})
