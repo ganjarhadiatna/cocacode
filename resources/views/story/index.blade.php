@@ -170,7 +170,7 @@
 					</button>
 				</div>
 				<div class="sc-col-2 txt-center mobile">
-                    <h3 class="ttl ttl-head-2 ttl-sekunder-color">Detail Design</h3>
+                    <h3 class="ttl ttl-head-2 ttl-sekunder-color">Design</h3>
                 </div>
 				<div class="sc-col-3 txt-right">
 					@if (is_int($story->is_save))

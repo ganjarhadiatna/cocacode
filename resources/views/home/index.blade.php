@@ -42,6 +42,11 @@
 										Add your Designs
 									</div>
 								</div>
+								<div class="grid-3">
+									<button class="icn btn btn-circle btn-primary-color btn-focus">
+										<span class="fa fa-lg fa-arrow-right"></span>
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>

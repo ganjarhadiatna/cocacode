@@ -6,7 +6,9 @@
 	<div class="sc-place">
 		<div class="sc-block">
 			<div class="sc-col-1">
-				<h1 class="ttl-head ctn-main-font ctn-big">{{ $title }}</h1>
+				<h1 class="ttl-head ctn-main-font ctn-big">
+					What's New on {{ $title }}
+				</h1>
 			</div>
 		</div>
 	</div>
