@@ -11,7 +11,7 @@
 		<div class="cover">
 			<div class="title">
 				<div class="padding-bottom-15px">
-					<h2>Join Pictlr Today.</h2>
+					<h2>Join Coca Code Today.</h2>
 				</div>
 				<div class="frame-info width-all">
 					<a href="{{ url('/login') }}">
