@@ -33,7 +33,7 @@
 </script>
 <div class="sc-header">
 	<div class="sc-place pos-fix">
-		<div class="col-800px">
+		<div class="col-900px">
 			<div class="sc-grid sc-grid-3x">
 				<div class="sc-col-1">
 					@if (Auth::id())
@@ -62,7 +62,7 @@
 		</div>
 	</div>
 </div>
-<div class="col-800px padding-20px">
+<div class="col-900px padding-20px">
 	@foreach ($boxDetail as $dt)
 		<h1 class="ttl-head ctn-main-font ctn-big ctn-white-color">{{ $dt->title }}</h1>
 		<p class="ttl-head ctn-main-font ctn-thin ctn-mikro ctn-white-color">{{ $dt->description }}</p>

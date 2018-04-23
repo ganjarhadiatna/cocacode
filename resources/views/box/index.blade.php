@@ -7,21 +7,13 @@
 
 	});
 </script>
-<div class="sc-header">
-	<div class="sc-place pos-fix">
-		<div class="col-800px">
-			<div class="sc-grid sc-grid-2x">
-				<div class="sc-col-1">
-					<h3 class="ttl-head-2 ttl-sekunder-color">My Boxs</h3>
-				</div>
-				<div class="sc-col-2 txt-right">
-					<a href="{{ url('/compose/box') }}">
-                        <button class="btn btn-main2-color">
-                            <span class="fas fa-lg fa-plus"></span>
-                            <span>Add Box</span>
-                        </button>
-                    </a>
-				</div>
+<div class="sc-header padding-10px">
+	<div class="sc-place">
+		<div class="sc-block">
+			<div class="sc-col-1">
+				<h1 class="ttl-head ctn-main-font ctn-big">
+					My Boxs
+				</h1>
 			</div>
 		</div>
 	</div>
