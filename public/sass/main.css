@@ -911,7 +911,7 @@
   .frame-sign .mid .block {
     width: 90%;
     margin: auto;
-    color: rgba(0, 0, 0, 0.84); }
+    color: rgba(0, 0, 0, 0.54); }
     .frame-sign .mid .block.center {
       text-align: center; }
     .frame-sign .mid .block .ttl {
@@ -928,7 +928,7 @@
         width: 200px; }
     .frame-sign .mid .block h1 {
       text-align: center;
-      color: rgba(0, 0, 0, 0.84);
+      color: rgba(0, 0, 0, 0.54);
       padding: 15px 0; }
     .frame-sign .mid .block p {
       font-size: 14px;
