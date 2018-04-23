@@ -51,10 +51,10 @@
                     <h3 class="ttl ttl-head-2 ttl-sekunder-color">Box</h3>
                 </div>
 				<div class="sc-col-3 txt-right">
-					<a href="{{ url('/compose/story') }}">
+					<a href="{{ url('/compose/design') }}">
                         <button class="btn btn-main2-color">
                             <span class="fas fa-lg fa-plus"></span>
-                            <span>Add Story</span>
+                            <span>Design</span>
                         </button>
                     </a>
 				</div>
