@@ -68,7 +68,7 @@
 					<p>Let's start to posting something, you can post picture and save it to your box. It's easy to use and that's all free for you...</p>
 					<div class="padding-10px">
 						<a href="{{ url('/compose/story') }}">
-							<button class="create btn btn-main3-color width-all" onclick="opCompose('open');">
+							<button class="create btn btn-main-color width-all" onclick="opCompose('open');">
 								<span class="fas fa-lg fa-plus"></span>
 								<span>Create your Story</span>
 							</button>

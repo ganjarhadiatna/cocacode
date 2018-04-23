@@ -43,7 +43,7 @@
 		width: 100%;
 		min-height: 40px;
 		padding: 10px 0;
-		background-color: $min-color;
+		background-color: $sek-color;
 		.sc-grid-3x {
 			@include grid_3x(1fr, 1fr, 1fr);
 		}
@@ -84,16 +84,16 @@
 			}
 			.ttl-head {
 				@include post_center();
-				color: $sek-color;
+				color: $txt-sek-color;
 			}
 			.ttl-head-2 {
 				@include post_top();
-				color: $sek-color;
+				color: $txt-sek-color;
 			}
 		}
 		.sc-block {
 			@include col_set(1000px);
-			color: $sek-color;
+			color: $txt-sek-color;
 			text-align: center;
 		}
 	}

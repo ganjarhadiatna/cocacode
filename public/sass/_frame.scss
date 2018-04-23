@@ -142,9 +142,12 @@
 				width: 90%;
 			}
 		}
+		.ttl {
+			color: $txt-sek-color;
+		}
 	}
 	.ttl {
-		color: $sek-color;
+		color: $txt-sek-color;
 	}
 	.banner {
 		position: relative;
@@ -153,6 +156,7 @@
 		background-size: 100%;
 		background-repeat: no-repeat;
 		text-align: center;
+		@include bdr_top_bottom();
 	}
 	.cover {
 		position: relative;
@@ -161,6 +165,7 @@
 		margin: auto;
 		padding: 30px 30px 50px 30px;
 		border-radius: 5px;
+		color: $txt-sek-color;
 		@media (max-width: $max-width) {
 			width: calc(100% - 40px);
 			padding: 30px 20px 50px 20px;
@@ -168,7 +173,7 @@
 		}
 		.ttl {
 			text-align: center;
-			color: $sek-color;
+			color: $txt-sek-color;
 			.mn-title {
 				position: relative;
 				line-height: 1.5;
@@ -202,8 +207,8 @@
 			height: 70px;
 			line-height: 70px;
 			text-align: center;
-			border: 2px $sek-color solid;
-			color: $sek-color;
+			border: 2px $txt-sek-color solid;
+			color: $txt-sek-color;
 			border-radius: 100%;
 		}
 	}
@@ -217,7 +222,7 @@
 	.mid {
 		padding-bottom: 30px;
 		font-weight: 900;
-		color: $sek-color;
+		color: $txt-sek-color;
 	}
 }
 
@@ -233,12 +238,12 @@
 		font-size: 48pt;
 		border-radius: 100%;
 		background-color: $pos-color;
-		color: $sek-color;
+		color: $txt-sek-color;
 	}
 	.ttl {
 		font-size: $txt-size-big;
 		font-weight: 600;
-		color: $sek-color;
+		color: $txt-sek-color;
 	}
 }
 
@@ -595,14 +600,14 @@
 		}
 		.info {
 			position: relative;
-			color: $sek-color;
+			color: $txt-sek-color;
 			@include column_2();
 			.user-name {
-				color: $sek-color;
+				color: $txt-sek-color;
 			}
 			.other {
 				a {
-					color: $sek-color;
+					color: $txt-sek-color;
 					font-weight: 600;
 				}
 				.link {
@@ -625,7 +630,7 @@
 							font-size: $txt-size-desc;
 						}
 						.ttl {
-							color: #f0f0f0;
+							color: rgba(0,0,0,0.34);
 							font-weight: 500;
 							font-size: 14px;
 						}

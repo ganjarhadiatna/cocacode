@@ -4,7 +4,7 @@
 @section('content')
 <div class="frame-guess">
 	<div class="block bdr-bottom">
-		<div class="logo" style="background-image: url('{{ asset('/img/5.png') }}')"></div>
+		<div class="logo" style="background-image: url('{{ asset('/img/CocaCode/2.png') }}')"></div>
 		<div class="ttl ctn-main-font ctn-small ctn-center padding-10px">You have a Box Now.</div>
 	</div>
 	<div class="banner bdr-bottom">
@@ -102,7 +102,7 @@
 				Fresh Stories
 				<div class="padding-10px"></div>
 				<a href="{{ url('/fresh') }}">
-					<input type="button" class="btn btn-main3-color" value="View More">
+					<input type="button" class="btn btn-main-color" value="View More">
 				</a>
 			</div>
 		</div>
@@ -114,7 +114,7 @@
 				Populars Stories
 				<div class="padding-10px"></div>
 				<a href="{{ url('/popular') }}">
-					<input type="button" class="btn btn-main3-color" value="View More">
+					<input type="button" class="btn btn-main-color" value="View More">
 				</a>
 			</div>
 		</div>
@@ -126,28 +126,29 @@
 				Trending Stories
 				<div class="padding-10px"></div>
 				<a href="{{ url('/trending') }}">
-					<input type="button" class="btn btn-main3-color" value="View More">
+					<input type="button" class="btn btn-main-color" value="View More">
 				</a>
 			</div>
 		</div>
 	</div>
-	<div class="block">
+	<div class="banner bdr-bottom">
 		<div class="cover">
-			<div class="frame-info width-all">
-				<div>
-					<h2>So, Let's get Started.</h2>
+			<div class="title">
+				<div class="padding-bottom-15px">
+					<h2>So, let's get started.</h2>
 				</div>
-				<div class="padding-10px"></div>
-				<a href="{{ url('/login') }}">
-					<button class="mrg-bottom create btn btn-sekunder-color" id="compose">
-						<span class="ttl-post">Login</span>
-					</button>
-				</a>
-				<a href="{{ url('/register') }}">
-					<button class="btn btn-main-color" id="compose">
-						<span class="ttl-post">Register</span>
-					</button>
-				</a>
+				<div class="frame-info width-all">
+					<a href="{{ url('/login') }}">
+						<button class="mrg-bottom create btn btn-sekunder-color" id="compose">
+							<span class="ttl-post">Login</span>
+						</button>
+					</a>
+					<a href="{{ url('/register') }}">
+						<button class="btn btn-main-color" id="compose">
+							<span class="ttl-post">Register</span>
+						</button>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -21,7 +21,7 @@
 }
 
 html {
-	background-color: $min-color;
+	background-color: $sek-color;
 	&.set-scroll {
 		overflow-y: hidden;
 	}
@@ -89,7 +89,7 @@ a {
 		color: $txt-min-color;
 	}
 	&.ctn-white-color {
-		color: #fff;
+		color: $txt-sek-color;
 	}
 	&.ctn-line {
 		line-height: 1.5;
@@ -114,13 +114,13 @@ a {
 		left: 0;
 		width: 100%;
 		z-index: 100;;
-		background-color: $min-color;
+		background-color: $sek-color;
 		@include bdr_bottom();
 		.menu {
 			position: relative;
 			padding: 10px 0;
 			cursor: default;
-			@include grid_3x(120px, 1fr, 1fr);
+			@include grid_3x(60px, 1fr, 1fr);
 			@include col_full();
 			@media (max-width: $max-width) {
 				@include grid_2x(100px, 1fr);
@@ -133,20 +133,24 @@ a {
 				}
 			}
 			.pos {
-				.btn.active {
-					@include rgba_black(0.2, #fff);
+				.btn{
+					&.active {
+						background-color: rgba(225,225,225,0.54);
+						color: $txt-min-color;
+					}
 				}
 			}
 			.lef {
 				@include column_1();
 				.logo {
 					position: relative;
-					width: 120px;
+					width: 40px;
 					height: 40px;
 					overflow: hidden;
+					border-radius: 100%;
 					img {
 						@include post_top();
-						width: calc(100% - 20px);
+						width: 100%;
 					}
 				}
 			}
@@ -165,19 +169,19 @@ a {
 					width: 450px;
 					height: 40px;
 					overflow: hidden;
-					background-color: rgba(0,0,0,0.2);
+					background-color: rgba(225,225,225,0.44);
 					border-radius: 5px;
 					@media (max-width: $max-width) {
 						width: 100%;
 					}
 					&.select {
-						background-color: $sek-color;
+						background-color: rgba(225,225,225,0.54);
 						.txt {
-							background-color: #fff;
-							color: rgba(0,0,0,0.84);
+							background-color: rgba(225,225,225,0.54);
+							color: $txt-min-color;
 						}
 						.btn {
-							background-color: $sek-color;
+							background-color: rgba(225,225,225,0.54);
 							color: $min-color;
 						}
 					}
@@ -185,14 +189,14 @@ a {
 						width: calc(100% - 70px);
 						float: right;
 						background-color: rgba(0,0,0,0);
-						color: #f0f0f0;
+						color: $txt-sek-color;
 					}
 					.btn {
 						width: 40px;
 						padding: 0 0;
 						float: left;
 						background-color: rgba(0,0,0,0);
-						color: #f0f0f0;
+						color: $txt-sek-color;
 					}
 				}
 			}
@@ -337,7 +341,7 @@ a {
 			display: inline-block;
 			padding: 0 5px;
 			a {
-				color: $sek-color;
+				color: $txt-sek-color;
 				font-size: 14px;
 				font-weight: 600;
 				&:hover {
@@ -348,7 +352,7 @@ a {
 				position: relative;
 				top: -2.5px;
 				font-size: 5px;
-				color: rgba(225,225,225,0.54);
+				color: rgba(225,225,225,0.94);
 			}
 		}
 	}

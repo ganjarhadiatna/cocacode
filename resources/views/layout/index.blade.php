@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- ICON -->
-    <link href="{{ asset('/img/pictlr-4.png') }}" rel='SHORTCUT ICON'/>
+    <link href="{{ asset('/img/C/5.png') }}" rel='SHORTCUT ICON'/>
 
 	<!-- SASS -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/css/fontawesome-all.min.css') }}">
@@ -165,7 +165,7 @@
 				<div class="pos lef">
 					<div class="logo" >
 						<a href="{{ url('/') }}">
-							<img src="{{ asset('/img/5.png') }}" alt="Pictlr">
+							<img src="{{ asset('/img/C/5.png') }}" alt="Pictlr">
 						</a>
 					</div>
 				</div>
@@ -191,12 +191,12 @@
 
 					@if (!Auth::id())
 						<a href="{{ url('/login') }}">
-							<button class="btn-icn btn btn-main-color ctn-up btn-radius" id="profile">
+							<button class="btn-icn btn btn-main2-color ctn-up btn-radius" id="profile">
 								<span>Login</span>
 							</button>
 						</a>
 						<a href="{{ url('/register') }}">
-							<button class="create btn btn-circle btn-main3-color">
+							<button class="create btn btn-circle btn-main-color">
 								<span class="fas fa-lg fa-plus"></span>
 							</button>
 						</a>
@@ -218,7 +218,7 @@
 								</button>
 							</a>
 						@endforeach
-						<button class="create btn btn-circle btn-main3-color" id="op-add" key="hide">
+						<button class="create btn btn-circle btn-main-color" id="op-add" key="hide">
 							<span class="fas fa-lg fa-plus"></span>
 						</button>
 					@endif

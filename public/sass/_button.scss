@@ -31,10 +31,10 @@
 	}
 	&.btn-main2-color {
 		background-color: rgba(0,0,0,0);
-		color: $sek-color;
+		color: $txt-sek-color;
 		&:hover {
-			background-color: rgba(0,0,0,0.2);
-			color: $sek-color;
+			background-color: rgba(225,225,225,0.54);
+			color: $txt-min-color;
 		}
 	}
 	&.btn-main3-color {
