@@ -93,7 +93,8 @@
 	}
 	function toComment() {
 		var top = $('#tr-comment').offset().top;
-		$('html, body').animate({scrollTop : (Math.round(top) - 70)}, 300);
+		$('html, body').animate({scrollTop : (Math.round(top) - 100)}, 300);
+		$('#comment-description').select();
 	}
 	$(document).ready(function() {
 		$('#offset-comment').val(0);
@@ -151,14 +152,14 @@
 </script>
 <div class="sc-header">
 	<div class="sc-place pos-fix">
-		<div class="col-small">
-			<div class="sc-grid sc-grid-2x">
+		<div class="col-900px">
+			<div class="sc-grid sc-grid-3x">
 				<div class="sc-col-1">
 					@if ($story->id == Auth::id())
 						<button class="btn btn-circle btn-main2-color btn-focus" onclick="opQuestionPost('{{ $story->idstory }}')">
 							<span class="far fa-lg fa-trash-alt"></span>
 						</button>
-						<a href="{{ url('/story/'.$story->idstory.'/edit/'.Auth::id().'/'.csrf_token()) }}">
+						<a href="{{ url('/design/'.$story->idstory.'/edit/'.Auth::id().'/'.csrf_token()) }}">
 							<button class="btn btn-circle btn-main2-color btn-focus">
 								<span class="fas fa-lg fa-pencil-alt"></span>
 							</button>
@@ -168,7 +169,10 @@
 						<span class="fas fa-lg fa-ellipsis-h"></span>
 					</button>
 				</div>
-				<div class="sc-col-2 txt-right">
+				<div class="sc-col-2 txt-center mobile">
+                    <h3 class="ttl ttl-head-2 ttl-sekunder-color">Detail Design</h3>
+                </div>
+				<div class="sc-col-3 txt-right">
 					@if (is_int($story->is_save))
 						<button class="btn btn-main-color btn-no-border"
 							id="bookmark-{{ $story->idstory }}" 
@@ -194,109 +198,142 @@
 <div class="place-story">
 	<div class="main">
 		<div class="place">
-			<div class="frame-story" id="main-story">
-				<div class="pos mid">
-					<div class="pict padding-bottom-10px">
-						<img src="{{ asset('/story/covers/'.$story->cover) }}" alt="pict">
-					</div>
-					<div class="content ctn ctn-main ctn-sans-serif">
-						@if ($story->description != "")
-							<div class="padding-bottom-10px desc">
-								<?php echo $story->description; ?>
-							</div>
-						@endif
-					</div>
-					<div>
-						@if (count($tags) > 0)
-							@foreach($tags as $tag)
-							<?php 
-								$replace = array('[',']','@',',','.','#','+','-','*','<','>','-','(',')',';','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
-								$title = str_replace($replace, '', $tag->tag); 
-							?>
-							<a href="{{ url('/tags/'.$title) }}" class="frame-top-tag">
-								<div>{{ $tag->tag }}</div>
-							</a>
-							@endforeach
-						@endif
+			<div class="frame-story grid col-900px" id="main-story">
+				<div class="grid-1">
+					<div class="mid padding-top-10px">
+						<div class="pict">
+							<img src="{{ asset('/story/covers/'.$story->cover) }}" alt="pict">
+						</div>						
 					</div>
 				</div>
-				<div class="pos mid bdr-top">
-					<div class="panel-bottom">
-						<div class="col-auto">
-							<div class="grid grid-2x">
-								<div class="grid-1">
-									<button class="btn btn-sekunder-color btn-no-border btn-no-pad">
-										<span id="ttl-view">{{ ($story->views + $story->ttl_comment) }} Notes</span>
-									</button>
+				<div class="grid-2">
+					<div class="pos mid bdr-bottom">
+						<div class="ctn-main-font ctn-14px ctn-sek-color ctn-bold padding-bottom-15px">Other Designs</div>
+						<div class="place-search-tag">
+							<div class="st-lef">
+								<div class="btn btn-circle btn-sekunder-color btn-no-border hg-100px" onclick="toLeft()">
+									<span class="fa fa-lg fa-angle-left"></span>
 								</div>
-								<div class="grid-2 text-right crs-default">
-									<button class="btn btn-main4-color">
-										<span class="fas fa-lg fa-align-center"></span>
-										<span id="ttl-view">{{ $story->views }}</span>
-									</button>
-									<button class="btn btn-main4-color" onclick="toComment()">
-										<span class="far fa-lg fa-comment"></span>
-										<span class="ttl-loves">{{ $story->ttl_comment }}</span>
-									</button>
-									<button class="btn btn-main4-color">
-										<span class="far fa-lg fa-bookmark"></span>
-										<span class="ttl-loves">{{ $story->ttl_save }}</span>
-									</button>
+							</div>
+							<div class="st-mid" id="ctnTag">
+								@for ($i=1; $i < 10; $i++)
+									<div class="image image-100px image-radius" style="background-image: url({{ asset('/story/thumbnails/'.$story->cover) }})"></div>
+								@endfor
+							</div>
+							<div class="st-rig">
+								<div class="btn btn-circle btn-sekunder-color btn-no-border hg-100px" onclick="toRight()">
+									<span class="fa fa-lg fa-angle-right"></span>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="pos bot bdr-top">
-					<div class="profile">
-						<div class="foto">
-							<a href="{{ url('/user/'.$story->id) }}">
-								<div class="image image-35px image-circle" style="background-image: url({{ asset('/profile/thumbnails/'.$story->foto) }});"></div>
-							</a>
-						</div>
-						<div class="info">
-							<div class="name">
-								<div>
-									<a href="{{ url('/user/'.$story->id) }}">
-										{{ $story->username }}
-									</a>
+					<div class="mid bdr-top padding-bottom-5px">
+						<div class="content ctn ctn-main ctn-sans-serif">
+							@if ($story->description != "")
+								<div class="desc ctn-main-font ctn-bold ctn-16px ctn-sek-color padding-bottom-10px">
+									<?php echo $story->description; ?>
 								</div>
-							</div>
+							@endif
 						</div>
-						<div class="tool">
-							@if ($story->id != Auth::id())
-								@if (is_int($statusFolow))
-									<input type="button" name="follow" class="btn btn-main3-color" id="add-follow-{{ $story->id }}" value="Unfollow" onclick="opFollow('{{ $story->id }}', '{{ url("/") }}', '{{ Auth::id() }}')">
-								@else
-									<input type="button" name="follow" class="btn btn-sekunder-color" id="add-follow-{{ $story->id }}" value="Follow" onclick="opFollow('{{ $story->id }}', '{{ url("/") }}', '{{ Auth::id() }}')">
-								@endif
+						<div>
+							@if (count($tags) > 0)
+								@foreach($tags as $tag)
+								<?php 
+									$replace = array('[',']','@',',','.','#','+','-','*','<','>','-','(',')',';','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
+									$title = str_replace($replace, '', $tag->tag); 
+								?>
+								<a href="{{ url('/tags/'.$title) }}" class="frame-top-tag">
+									<div>{{ $tag->tag }}</div>
+								</a>
+								@endforeach
 							@endif
 						</div>
 					</div>
-				</div>
-				<div class="pos bot bdr-top">
-					<div class="here">
-						<div class="here-block">
-							<ul class="menu-share">
-								<li class="mn btn btn-color-fb">
-									<span class="fab fa-lg fa-facebook"></span>
-								</li>
-								<li class="mn btn btn-color-tw">
-									<span class="fab fa-lg fa-twitter"></span>
-								</li>
-								<li class="mn btn btn-color-gg-2">
-									<span class="fab fa-lg fa-pinterest"></span>
-								</li>
-								<li class="mn btn btn-color-gg">
-									<span class="fab fa-lg fa-google-plus"></span>
-								</li>
-							</ul>
+					<div class="pos mid bdr-top">
+						<div class="panel-bottom">
+							<div class="col-auto">
+								<div class="grid grid-2x">
+									<div class="grid-1">
+										<button class="btn btn-sekunder-color btn-no-border btn-no-pad">
+											<span id="ttl-view">{{ ($story->views + $story->ttl_comment) }} Notes</span>
+										</button>
+									</div>
+									<div class="grid-2 text-right crs-default">
+										<button class="btn btn-main4-color">
+											<span class="fas fa-lg fa-align-center"></span>
+											<span id="ttl-view">{{ $story->views }}</span>
+										</button>
+										<button class="btn btn-main4-color" onclick="toComment()">
+											<span class="far fa-lg fa-comment"></span>
+											<span class="ttl-loves">{{ $story->ttl_comment }}</span>
+										</button>
+										<button class="btn btn-main4-color">
+											<span class="far fa-lg fa-bookmark"></span>
+											<span class="ttl-loves">{{ $story->ttl_save }}</span>
+										</button>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="loved top-comment bdr-top" id="tr-comment">
+					<div class="pos bot bdr-top">
+						<div class="profile">
+							<div class="foto">
+								<a href="{{ url('/user/'.$story->id) }}">
+									<div class="image image-35px image-circle" style="background-image: url({{ asset('/profile/thumbnails/'.$story->foto) }});"></div>
+								</a>
+							</div>
+							<div class="info">
+								<div class="name">
+									<div>
+										<a href="{{ url('/user/'.$story->id) }}">
+											{{ $story->username }}
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="tool">
+								@if ($story->id != Auth::id())
+									@if (is_int($statusFolow))
+										<input type="button" name="follow" class="btn btn-main3-color" id="add-follow-{{ $story->id }}" value="Unfollow" onclick="opFollow('{{ $story->id }}', '{{ url("/") }}', '{{ Auth::id() }}')">
+									@else
+										<input type="button" name="follow" class="btn btn-sekunder-color" id="add-follow-{{ $story->id }}" value="Follow" onclick="opFollow('{{ $story->id }}', '{{ url("/") }}', '{{ Auth::id() }}')">
+									@endif
+								@endif
+							</div>
+						</div>
+					</div>
+					<div class="pos bot bdr-top">
+						<div class="ctn-main-font ctn-14px ctn-sek-color ctn-bold padding-bottom-15px">Share to your friends</div>
+						<div class="here">
+							<div class="here-block">
+								<ul class="menu-share">
+									<li class="mn btn btn-color-fb">
+										<span class="fab fa-lg fa-facebook"></span>
+									</li>
+									<li class="mn btn btn-color-tw">
+										<span class="fab fa-lg fa-twitter"></span>
+									</li>
+									<li class="mn btn btn-color-gg-2">
+										<span class="fab fa-lg fa-pinterest"></span>
+									</li>
+									<li class="mn btn btn-color-gg">
+										<span class="fab fa-lg fa-google-plus"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="frame-story col-900px padding-bottom-20px">
+				<div class="bot place-comment">
+					<div class="loved top-comment" id="tr-comment">
+						<div class="ctn-main-font ctn-16px ctn-sek-color ctn-bold padding-5px">Comments</div>
 						@if (Auth::id())
 						<form method="post" action="javascript:void(0)" id="comment-publish">
-							<div class="comment-head bdr-bottom">
+							<div class="comment-head">
 								<div>
 									<textarea class="txt comment-text txt-sekunder-color" id="comment-description" placeholder="Type comment here.."></textarea>
 								</div>
@@ -323,6 +360,11 @@
 	</div>
 </div>
 @endforeach
+<div class="col-full">
+	<div class="padding-20px">
+		<div class="ctn-main-font ctn-small ctn-sek-color ctn-bold ctn-center">Related Designs</div>
+	</div>
+</div>
 <div class="padding-20px">
 	<div>
 		<div class="post">

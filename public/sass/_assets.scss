@@ -11,8 +11,13 @@ $txt-min-color: rgba(0,0,0,0.84);
 $txt-sek-color: rgba(0,0,0,0.54);
 $txt-size-title: 22px;
 $txt-size-desc: 14px;
+$txt-size-desc: 14px;
 $txt-size-big: 32px;
-$txt-size-small: 14px;
+$txt-size-12px: 12px;
+$txt-size-14px: 14px;
+$txt-size-16px: 16px;
+$txt-size-18px: 18px;
+$txt-size-20px: 20px;
 
 //method
 @mixin rgba_black($val, $col) {

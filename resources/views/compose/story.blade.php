@@ -203,7 +203,7 @@
 			<div class="sc-grid sc-grid-3x">
 				<div class="sc-col-1"></div>
 				<div class="sc-col-2">
-					<h3 class="ttl-head ttl-sekunder-color">Create New Story</h3>
+					<h3 class="ttl-head ttl-sekunder-color">Add New Design</h3>
 				</div>
 				<div class="sc-col-3"></div>
 			</div>
@@ -242,7 +242,7 @@
 							<div class="block-field">
 								<div class="pan">
 									<div class="left">
-										<p class="ttl">Description</p>
+										<p class="ttl">Descriptions</p>
 									</div>
 									<div class="right">
 										<div class="count">

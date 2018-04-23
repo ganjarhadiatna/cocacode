@@ -22,13 +22,13 @@
 			</div>
 		</div>
 		<div class="mid-tool">
-			<a href="{{ url('/story/'.$story->idstory) }}">
+			<a href="{{ url('/design/'.$story->idstory) }}">
 				<div class="cover"></div>
 				<img src="{{ asset('/story/thumbnails/'.$story->cover) }}" alt="pict" id="pict-{{ $story->idstory }}" key="{{ $story->idstory }}">
 			</a>
 		</div>
 	</div>
-	<div class="desc">
+	<div class="desc ctn-main-font">
 		{{ $story->description }}
 	</div>
 	<div class="pos bot-tool">

@@ -9,7 +9,7 @@
 		<div class="col-full">
 			<div class="place-search-tag col-full">
 				<div class="st-lef">
-					<div class="btn btn-circle btn-main-color" onclick="toLeft()">
+					<div class="btn btn-circle btn-sekunder-color btn-no-border" onclick="toLeft()">
 						<span class="fa fa-lg fa-angle-left"></span>
 					</div>
 				</div>
@@ -27,7 +27,7 @@
 					@endforeach 
 				</div>
 				<div class="st-rig">
-					<div class="btn btn-circle btn-main-color" onclick="toRight()">
+					<div class="btn btn-circle btn-sekunder-color btn-no-border" onclick="toRight()">
 						<span class="fa fa-lg fa-angle-right"></span>
 					</div>
 				</div>

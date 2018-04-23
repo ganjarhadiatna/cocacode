@@ -29,7 +29,7 @@ class StoryController extends Controller
         $statusFolow = FollowModel::Check($iduser, $iduserMe);
         $check = BookmarkModel::Check($id, $iduserMe);
         return view('story.index', [
-            'title' => 'Story',
+            'title' => 'Design',
             'path' => 'none',
             'getStory' => $getStory,
             'newStory' => $newStory,

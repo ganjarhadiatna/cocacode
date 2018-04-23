@@ -25,10 +25,10 @@
                 <span class="ttl">Add Box</span>
             </li>
         </a>
-        <a href="{{ url('/compose/story') }}">
+        <a href="{{ url('/compose/design') }}">
             <li>
                 <span class="icn fas fa-lg fa-plus"></span>
-                <span class="ttl">Add Story</span>
+                <span class="ttl">Add Design</span>
             </li>
         </a>
     </ul>

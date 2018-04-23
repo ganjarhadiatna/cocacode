@@ -36,6 +36,12 @@ a {
 	text-decoration: none;
 }
 
+.mobile {
+	@media (max-width: $max-width) {
+		display: none;
+	}
+}
+
 .col-all {
 	@include col_all();
 }

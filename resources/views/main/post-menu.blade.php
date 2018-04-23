@@ -1,14 +1,14 @@
 <script type="text/javascript">
-	function viewPost(idstory, title) {
-		var server_post = '{{ url("/story/") }}'+'/'+idstory+'/'+title;
+	function viewPost(idstory, title='') {
+		var server_post = '{{ url("/design/") }}'+'/'+idstory+'/'+title;
 		window.location = server_post;
 	}
 	function editPost(idstory, iduser) {
-		var server_post = '{{ url("/story/") }}'+'/'+idstory+'/edit/'+iduser+'/{{ csrf_token() }}';
+		var server_post = '{{ url("/design/") }}'+'/'+idstory+'/edit/'+iduser+'/{{ csrf_token() }}';
 		window.location = server_post;
 	}
 	function opQuestionPost(idstory) {
-		opQuestion('open','Are you sure you want to delete this story ?', 'deletePost("'+idstory+'")');
+		opQuestion('open','Are you sure you want to delete this design ?', 'deletePost("'+idstory+'")');
 	}
 	function deletePost(idstory) {
 		$.ajax({
@@ -17,15 +17,15 @@
 			data: {'idstory': idstory},
 			beforeSend: function() {
 				opQuestion('hide');
-				open_progress('Deleting your Story...');
+				open_progress('Deleting your design...');
 			}
 		})
 		.done(function(data) {
 			close_progress();
 			if (data === 'success') {
-				opAlert('open', 'This story has been deleted, to take effect try refresh this page.');
+				opAlert('open', 'This design has been deleted, to take effect try refresh this page.');
 			} else {
-				opAlert('open', 'Failed to delete this story.');
+				opAlert('open', 'Failed to delete this design.');
 			}
 		})
 		.fail(function() {
@@ -53,9 +53,9 @@
 		if (stt === 'open') {
 			$('#'+path).show();
 			if (id === iduser) {
-				var menu = '<li onclick="viewPost('+"'"+idstory+"'"+', '+"'"+title+"'"+')">View Story</li><li onclick="editPost('+idstory+','+iduser+')">Edit Story</li><li onclick="opQuestionPost('+idstory+')">Delete Story</li>';
+				var menu = '<li onclick="viewPost('+idstory+')">View Design</li><li onclick="editPost('+idstory+','+iduser+')">Edit Design</li><li onclick="opQuestionPost('+idstory+')">Delete Story</li>';
 			} else {
-				var menu = '<li onclick="viewPost('+"'"+idstory+"'"+', '+"'"+title+"'"+')">View Story<li>Report Story</li>';
+				var menu = '<li onclick="viewPost('+idstory+')">View Design<li>Report Design</li>';
 			}
 			$('.content-popup .place-popup #val').html(menu);
 		} else {

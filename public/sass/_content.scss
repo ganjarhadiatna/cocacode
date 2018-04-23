@@ -48,7 +48,7 @@
 				list-style: none;
 				text-align: center;
 				padding: 15px 0;
-				font-size: $txt-size-small;
+				font-size: $txt-size-desc;
 				cursor: pointer;
 				color: $txt-sek-color;
 				&:hover {
@@ -280,7 +280,7 @@
 					margin-bottom: 15px;
 				}
 				p {
-					font-size: $txt-size-small;
+					font-size: $txt-size-desc;
 					color: $txt-sek-color;
 					margin-bottom: 5px;
 				}

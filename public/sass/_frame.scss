@@ -37,7 +37,7 @@
 				@include post_top();
 				font-size: $txt-size-desc;
 				font-weight: 600;
-				color: $txt-min-color;
+				color: $txt-sek-color;
 				&:hover {
 					color: $min-color;
 				}
@@ -46,7 +46,7 @@
 				@include post_top();
 				font-size: $txt-size-desc;
 				font-weight: 600;
-				color: $txt-min-color;
+				color: $txt-sek-color;
 				&:hover {
 					color: $min-color;
 				}
@@ -92,10 +92,10 @@
 	}
 	.desc {
 		padding: 5px 0;
-		font-size: $txt-size-small;
+		font-size: $txt-size-desc;
 		font-weight: 600;
 		line-height: 1.5;
-		color: $txt-min-color;
+		color: $txt-sek-color;
 	}
 	.bot-tool {
 		position: relative;
@@ -108,7 +108,7 @@
 				@include post_top();
 				font-size: 14px;
 				font-weight: 600;
-				color: $txt-min-color;
+				color: $txt-sek-color;
 			}
 		}
 		.bok {
@@ -405,12 +405,30 @@
 
 .frame-story {
 	position: relative;
-	@include col_set(700px);
+	@include col_set($col-full);
 	background-color: $sek-color;
 	border-radius: 5px;
 	z-index: 1;
 	@media (max-width: $max-width) {
 		border-radius: 0;
+	}
+	&.grid {
+		@include grid_2x(1fr, 400px);
+		@media (max-width: $max-width) {
+			@include grid_none();
+		}
+		.grid-1 {
+			@include column_1();
+			width: calc(100% - 20px);
+			margin-right: 20px;
+			@media (max-width: $max-width) {
+				width: 100%;
+				margin-right: 0;
+			}
+		}
+		.grid-2 {
+			@include column_2();
+		}
 	}
 	img {
 		width: 100%;
@@ -424,7 +442,7 @@
 			padding: 10px 0;
 		}
 		.date {
-			font-size: $txt-size-small;
+			font-size: $txt-size-desc;
 			color: $txt-sek-color;
 		}
 		.grid {
@@ -449,11 +467,11 @@
 	.mid {
 		.pict {
 			img {
-				border-radius: 5px;
+				border-radius: 10px;
 			}
 		}
 		.content {
-			color: $txt-min-color;
+			color: $txt-sek-color;
 		}
 		.place-cover {
 			margin: 10px 0 25px 0;
@@ -461,25 +479,21 @@
 		.title {
 			line-height: 1.5;
 			font-weight: 600;
-			color: $txt-min-color;
+			color: $txt-sek-color;
 			font-size: $txt-size-title;
 		}
 		.desc {
 			line-height: 1.5;
-			font-weight: 600;
-			color: $txt-min-color;
-			font-size: $txt-size-desc;
 		}
 	}
 	.bot {
-		color: $txt-min-color;
+		color: $txt-sek-color;
 		.loved {
 			margin: 15px 0;
 		}
 		.top-comment {
 			.comment-head {
-				@include bdr_top_bottom();
-				padding: 20px 0;
+				padding: 15px 0;
 				.comment-text {
 					min-width: calc(100% - 30px);
 					max-width: calc(100% - 30px);
@@ -520,7 +534,7 @@
 					font-weight: 600;
 					font-size: $txt-size-desc;
 					a {
-						color: $txt-min-color;
+						color: $txt-sek-color;
 						&:hover {
 							color: $min-color;
 						}
@@ -557,7 +571,7 @@
 		line-height: 1.5;
 		font-weight: 500;
 		color: $txt-sek-color;
-		font-size: $txt-size-small;
+		font-size: $txt-size-desc;
 		.fa {
 			position: relative;
 			top: -3px;
@@ -575,12 +589,12 @@
 	}
 	.desk {
 		color: $txt-min-color;
-		font-size: $txt-size-small;
+		font-size: $txt-size-16px;
 		font-weight: 500;
 		line-height: 1.5;
 		a {
 			color: $txt-min-color;
-			font-size: $txt-size-small;
+			font-size: $txt-size-16px;
 			&:hover {
 				color: $min-color;
 			}
@@ -665,7 +679,7 @@
 					width: 100%;
 					padding: 15px 0;
 					cursor: pointer;
-					font-size: $txt-size-small;
+					font-size: $txt-size-desc;
 					color: $txt-sek-color;
 					@include bdr_bottom();
 					@include grid_2x(1fr, 50px);
@@ -687,7 +701,7 @@
 				width: 100%;
 				padding-top: 25px;
 				color: $txt-sek-color;
-				font-size: $txt-size-small;
+				font-size: $txt-size-desc;
 				@include grid_2x(40px, 1fr);
 				.pe-1 {
 					@include column_1();
@@ -746,7 +760,7 @@
 
 	background-color: #f0f0f0;
 	color: $txt-sek-color;
-	font-size: $txt-size-small;
+	font-size: $txt-size-desc;
 
 	font-weight: 600;
 	border-radius: 3px;
@@ -873,7 +887,7 @@
 		}
 	}
 }
-.frame-small-box {
+.frame-desc-box {
 	position: relative;
 	width: calc(100% - 20px);
 	padding: 10px;

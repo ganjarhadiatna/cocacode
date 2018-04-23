@@ -124,19 +124,19 @@
 			contentType: false,
 			type: 'post',
 			beforeSend: function() {
-				open_progress('Updating your Story...');
+				open_progress('Updating your design...');
 			}
 		})
 		.done(function(data) {
 		   	if (data === 'failed') {
-		   		opAlert('open', 'failed to saving story, your story still the same with previous content. To fix problem try with edit content story.');
+		   		opAlert('open', 'failed to saving design, your design still the same with previous content. To fix problem try with edit content design.');
 		   		close_progress();
 		   	} else {
 				$('#title-story').val('');
 				$('#write-story').val('');
 				opCreateStory('close');
 				close_progress();
-				window.location = '{{ url("/story/") }}'+'/'+data;
+				window.location = '{{ url("/design/") }}'+'/'+data;
 		   	}
 		   	//console.log(data);
 		})
@@ -186,7 +186,7 @@
 			<div class="sc-grid sc-grid-3x">
 				<div class="sc-col-1"></div>
 				<div class="sc-col-2">
-					<h3 class="ttl-head ttl-sekunder-color">Edit Story</h3>
+					<h3 class="ttl-head ttl-sekunder-color">Edit Informations</h3>
 				</div>
 				<div class="sc-col-3"></div>
 			</div>
@@ -210,7 +210,7 @@
 							<div class="block-field">
 								<div class="pan">
 									<div class="left">
-										<p class="ttl">Edit your Story Here</p>
+										<p class="ttl">Descriptions</p>
 									</div>
 									<div class="right">
 										<div class="count">

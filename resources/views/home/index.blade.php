@@ -29,7 +29,7 @@
 	<div class="post-home post-grid post-grid-2x">
 		<div class="lef post-grid-1" id="home-main-object">
 			@foreach (ProfileModel::UserSmallData(Auth::id()) as $dt)
-			<a href="{{ url('/compose/story') }}">
+			<a href="{{ url('/compose/design') }}">
 				<div class="frame-post">
 					<div class="mid padding-5px">
 						<div class="pos top-tool">
@@ -39,7 +39,7 @@
 								</div>
 								<div class="grid-2">
 									<div class="main-ttl">
-										Create Your Story
+										Add your Designs
 									</div>
 								</div>
 							</div>
@@ -64,13 +64,13 @@
 		<div class="rig post-grid-2">
 			<div id="home-side-object">
 				<div class="frame-other">
-					<strong class="ttl">Create your Story</strong>
-					<p>Let's start to posting something, you can post picture and save it to your box. It's easy to use and that's all free for you...</p>
+					<strong class="ttl">Add your Designs</strong>
+					<p>Add your design in here to get more interactions of much peoples who's looking for a jobless or looking for inspirations.</p>
 					<div class="padding-10px">
-						<a href="{{ url('/compose/story') }}">
+						<a href="{{ url('/compose/design') }}">
 							<button class="create btn btn-main-color width-all" onclick="opCompose('open');">
 								<span class="fas fa-lg fa-plus"></span>
-								<span>Create your Story</span>
+								<span>Add Design</span>
 							</button>
 						</a>
 					</div>

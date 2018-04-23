@@ -20,8 +20,8 @@ Route::get('/fresh', 'MainController@fresh');
 Route::get('/trending', 'MainController@trending');
 Route::get('/search/{ctr}', 'MainController@search');
 Route::get('/search', 'MainController@searchNormal');
-Route::get('/story/{id}', 'StoryController@story')->where(['id' => '[0-9]+']);
-Route::get('/story/{id}/{title}', 'StoryController@story')->where(['id' => '[0-9]+']);
+Route::get('/design/{id}', 'StoryController@story')->where(['id' => '[0-9]+']);
+Route::get('/design/{id}/{title}', 'StoryController@story')->where(['id' => '[0-9]+']);
 Route::get('/s/{id}', 'StoryController@story')->where(['id' => '[0-9]+']);
 
 /*user*/
@@ -29,7 +29,6 @@ Route::get('/user/{iduser}', 'ProfileController@story')->where(['iduser' => '[0-
 Route::get('/u/{iduser}', 'ProfileController@story')->where(['iduser' => '[0-9]+']);
 
 /*story*/
-Route::get('/story/all', 'StoryController@allStory');
 
 /*loves*/
 Route::post('/loves/add', 'StoryController@addLoves');
@@ -59,11 +58,11 @@ Route::middleware('auth')->group(function() {
     Route::post('/save/password', 'ProfileController@savePassword');
 
     /*compose*/
-    Route::get('/compose/story', 'MainController@composeStory');
+    Route::get('/compose/design', 'MainController@composeStory');
     Route::get('/compose/box', 'MainController@composeBox');
     Route::post('/story/image/upload', 'ImageController@upload');
     Route::post('/story/publish', 'StoryController@publish');
-    Route::get('/story/{idstory}/edit/{iduser}/{token}', 'StoryController@storyEdit');
+    Route::get('/design/{idstory}/edit/{iduser}/{token}', 'StoryController@storyEdit');
     Route::post('/story/save/editting', 'StoryController@saveEditting');
     Route::post('/story/delete', 'StoryController@deleteStory');
 

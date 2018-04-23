@@ -96,15 +96,15 @@
 			color: $txt-sek-color;
 			text-align: center;
 		}
-	}
-	.sc-place.pos-fix {
-		position: fixed;
-		top: 60px;
-		z-index: 50;
-		border-bottom: 1px rgba(0,0,0,0.1) solid;
-		@media (max-width: $max-width) {
-			position: relative;
-			top: 0;
+		&.pos-fix {
+			position: fixed;
+			top: 60px;
+			z-index: 50;
+			border-bottom: 1px rgba(0,0,0,0.1) solid;
+			@media (max-width: $max-width) {
+				position: relative;
+				top: 0;
+			}
 		}
 	}
 }
@@ -196,6 +196,9 @@
 		@include column_2();
 		white-space: nowrap;
 		overflow: hidden;
+		.image {
+			display: inline-block;
+		}
 	}
 	.st-rig {
 		@include column_3();
@@ -203,10 +206,13 @@
 	.btn {
 		position: relative;
 		width: 40px;
-		height: 45px;
-		line-height: 45px;
+		height: 40px;
+		line-height: 40px;
 		border-radius: 0;
-
 		font-size: 20px;
+		&.hg-100px {
+			height: 100px;
+			line-height: 100px;
+		}
 	}
 }
