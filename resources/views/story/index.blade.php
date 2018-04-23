@@ -170,7 +170,7 @@
 				</div>
 				<div class="sc-col-2 txt-right">
 					@if (is_int($story->is_save))
-						<button class="btn btn-main3-color btn-no-border"
+						<button class="btn btn-main-color btn-no-border"
 							id="bookmark-{{ $story->idstory }}" 
 							title="Remove from box?" 
 							onclick="removeBookmark('{{ $story->is_save }}','{{ $story->idstory }}')">
@@ -178,7 +178,7 @@
 							<span>Save</span>
 						</button>
 					@else
-						<button class="btn btn-main3-color btn-no-border" 
+						<button class="btn btn-main-color btn-no-border" 
 							id="bookmark-{{ $story->idstory }}"
 							title="Save to box?" 
 							onclick="opSave('open','{{ $story->idstory }}')">

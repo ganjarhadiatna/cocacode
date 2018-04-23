@@ -208,12 +208,14 @@
 /*frame post*/
 .frame-post {
   position: relative;
-  width: calc(100% - 35px);
+  width: calc(100% - 25px);
   padding: 10px 7.5px;
-  margin: 0 10px 15px 10px;
+  margin: 0 5px;
   display: inline-block;
   background-color: #fff;
   border-radius: 5px; }
+  .frame-post:hover {
+    background-color: rgba(225, 225, 225, 0.54); }
   @media (max-width: 768px) {
     .frame-post {
       width: calc(100% - 15px);
@@ -328,7 +330,9 @@
       cursor: default; }
       .frame-post .bot-tool .bok .btn {
         width: 30px;
-        padding: 0 0; }
+        padding: 0 0;
+        border-radius: 0;
+        background-color: transparent; }
 
 .frame-guess {
   position: relative;
@@ -579,10 +583,9 @@
 
 .frame-story {
   position: relative;
-  width: 680px;
+  width: 700px;
   margin: 0 auto;
   background-color: #fff;
-  padding: 10px;
   border-radius: 5px;
   z-index: 1; }
   @media (max-width: 768px) {
@@ -596,7 +599,7 @@
   .frame-story[width] {
     width: 100%; }
   .frame-story .pos {
-    padding: 10px 10px; }
+    padding: 10px 0; }
     @media (max-width: 768px) {
       .frame-story .pos {
         padding: 10px 0; } }

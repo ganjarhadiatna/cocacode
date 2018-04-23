@@ -1,12 +1,15 @@
 /*frame post*/
 .frame-post {
 	position: relative;
-	width: calc(100% - 35px);
+	width: calc(100% - 25px);
 	padding: 10px 7.5px;
-	margin: 0 10px 15px 10px;
+	margin: 0 5px;
 	display: inline-block;
 	background-color: $sek-color;
 	border-radius: 5px;
+	&:hover {
+		background-color: rgba(225,225,225,0.54);
+	}
 	@media (max-width: $max-width) {
 		width: calc(100% - 15px);
 		margin: 0 0 15px 0;
@@ -115,6 +118,8 @@
 			.btn {
 				width: 30px;
 				padding: 0 0;
+				border-radius: 0;
+				background-color: rgba(0,0,0,0);
 			}
 		}
 	}
@@ -400,9 +405,8 @@
 
 .frame-story {
 	position: relative;
-	@include col_set(680px);
+	@include col_set(700px);
 	background-color: $sek-color;
-	padding: 10px;
 	border-radius: 5px;
 	z-index: 1;
 	@media (max-width: $max-width) {
@@ -415,7 +419,7 @@
 		width: 100%;
 	}
 	.pos {
-		padding: 10px 10px;
+		padding: 10px 0;
 		@media (max-width: $max-width) {
 			padding: 10px 0;
 		}
