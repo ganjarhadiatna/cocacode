@@ -32,7 +32,7 @@
 		   		$('#title-box').val('');
 				$('#write-box').val('');
 				close_progress();
-				window.location = '{{ url("/box/") }}'+'/'+data;
+				window.location = '{{ url("/box") }}';
 		   	}
 		   	//console.log(data);
 		})
