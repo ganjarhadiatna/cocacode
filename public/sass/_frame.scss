@@ -258,13 +258,12 @@
 	width: calc(100% - 20px);
 	padding: 10px;
 	border-radius: 5px;
-	margin-bottom: 15px;
 	.ttl {
-		color: $txt-min-color;
+		color: $txt-sek-color;
 		line-height: 1.5;
 	}
 	p {
-		color: $txt-min-color;
+		color: $txt-sek-color;
 		font-size: 14px;
 		line-height: 1.5;
 	}
@@ -290,7 +289,7 @@
 			font-size: 14px;
 			font-weight: 600;
 			a {
-				color: $txt-min-color;
+				color: $txt-sek-color;
 				&:hover {
 					color: $min-color;
 				}
@@ -588,12 +587,12 @@
 		}
 	}
 	.desk {
-		color: $txt-min-color;
+		color: $txt-sek-color;
 		font-size: $txt-size-16px;
 		font-weight: 500;
 		line-height: 1.5;
 		a {
-			color: $txt-min-color;
+			color: $txt-sek-color;
 			font-size: $txt-size-16px;
 			&:hover {
 				color: $min-color;

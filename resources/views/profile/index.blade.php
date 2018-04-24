@@ -18,11 +18,11 @@
 				<div class="sc-col-1">
 					@if (Auth::id() == $p->id)
 						<a href="{{ url('/me/setting') }}">
-							<button class="btn btn-circle btn-main2-color">
+							<button classfollown btn-circle btn-sekunder-color">
 								<span class="fas fa-lg fa-cog"></span>
 							</button>
 						</a>
-						<a href="{{ url('/me/setting/profile') }}">
+						<a href="followrl('/me/setting/profile') }}">
 							<button class="btn btn-circle btn-main2-color">
 								<span class="fas fa-lg fa-pencil-alt"></span>
 							</button>
@@ -53,9 +53,9 @@
 						</a>
 					@else
 						@if (!is_int($statusFolow))
-							<input type="button" name="edit" class="btn btn-main2-color" id="add-follow-{{ $p->id }}" value="Follow" onclick="opFollow('{{ $p->id }}', '{{ url("/") }}', '{{ Auth::id() }}')">
+							<input type="button" name="follow" class="btn btn-sekunder-color" id="add-follow-{{ $p->id }}" value="Follow" onclick="opFollow('{{ $p->id }}', '{{ url("/") }}', '{{ Auth::id() }}')">
 						@else
-							<input type="button" name="edit" class="btn btn-main3-color" id="add-follow-{{ $p->id }}" value="Unfollow" onclick="opFollow('{{ $p->id }}', '{{ url("/") }}', '{{ Auth::id() }}')">
+							<input type="button" name="follow" class="btn btn-main3-color" id="add-follow-{{ $p->id }}" value="Unfollow" onclick="opFollow('{{ $p->id }}', '{{ url("/") }}', '{{ Auth::id() }}')">
 						@endif
 					@endif
 				</div>

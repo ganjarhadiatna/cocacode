@@ -457,13 +457,12 @@
   background-color: #fff;
   width: calc(100% - 20px);
   padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 15px; }
+  border-radius: 5px; }
   .frame-other .ttl {
-    color: rgba(0, 0, 0, 0.84);
+    color: rgba(0, 0, 0, 0.54);
     line-height: 1.5; }
   .frame-other p {
-    color: rgba(0, 0, 0, 0.84);
+    color: rgba(0, 0, 0, 0.54);
     font-size: 14px;
     line-height: 1.5; }
   .frame-other .create {
@@ -496,7 +495,7 @@
       font-size: 14px;
       font-weight: 600; }
       .frame-follow .ff-mid .fl-ttl a {
-        color: rgba(0, 0, 0, 0.84); }
+        color: rgba(0, 0, 0, 0.54); }
         .frame-follow .ff-mid .fl-ttl a:hover {
           color: #60000d; }
   .frame-follow .ff-bot {
@@ -765,12 +764,12 @@
       .frame-comment .tgl .del:hover {
         text-decoration: underline; }
   .frame-comment .desk {
-    color: rgba(0, 0, 0, 0.84);
+    color: rgba(0, 0, 0, 0.54);
     font-size: 16px;
     font-weight: 500;
     line-height: 1.5; }
     .frame-comment .desk a {
-      color: rgba(0, 0, 0, 0.84);
+      color: rgba(0, 0, 0, 0.54);
       font-size: 16px; }
       .frame-comment .desk a:hover {
         color: #60000d; }
