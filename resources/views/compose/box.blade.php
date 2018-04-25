@@ -69,7 +69,7 @@
 						</button>
 					</div>
 					<div class="sc-col-2">
-						<h3 class="ttl-head ttl-sekunder-color">Create Box</h3>
+						<h3 class="ttl-head ttl-sekunder-color">Add Box</h3>
 					</div>
 					<div class="sc-col-3 txt-right">
 						<input type="submit" name="save" class="btn btn-main-color" value="Create" id="btn-publish">
@@ -123,7 +123,6 @@
                         </div>
                     </div>
 				</div>
-				<div class="padding-10px"></div>
 			</div>
 		</div>
 	</div>

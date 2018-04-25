@@ -246,9 +246,9 @@
 .compose {
 	.main {
 		position: relative;
-		padding: 20px;
 		border-radius: 5px;
 		overflow: hidden;
+		padding-bottom: 20px;
 		background-color: $sek-color;
 		@media (max-width: $max-width) {
 			padding: 20px 10px;

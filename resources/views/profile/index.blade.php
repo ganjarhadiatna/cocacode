@@ -63,44 +63,46 @@
 		</div>
 	</div>
 </div>
-<div class="frame-profile">
-	<div class="profile">
-		<div class="foto">
-			<div class="image image-150px image-circle" id="place-picture" style="background-image: url({{ asset('/profile/photos/'.$p->foto) }});"></div>
-		</div>
-		<div class="info">
-			<div class="user-name ctn-main-font ctn-standar" id="edit-name">{{ $p->name }}</div>
-			<div>
-				<p id="edit-about"><strong>{{ $p->username }}</strong></p>
+<div class="padding-20px">
+	<div class="frame-profile">
+		<div class="profile">
+			<div class="foto">
+				<div class="image image-150px image-circle" id="place-picture" style="background-image: url({{ asset('/profile/photos/'.$p->foto) }});"></div>
 			</div>
-			<div>
-				<p id="edit-about">{{ $p->about }}</p>
-			</div>
-			<div class="other">
-				<a class="link" href="{{ $p->website }}" target="_blank">{{ $p->website }}</a>
-			</div>
-			<div>
-				<div class="other mrg-bottom">
-					<ul>
-						<li>
-							<a href="{{ url('/user/'.$p->id.'/story') }}">
-								<div class="val">{{ $p->ttl_story }}</div>
-								<div class="ttl">Stories</div>
-							</a>
-						</li>
-						<li>
-							<a href="{{ url('/user/'.$p->id.'/following') }}">
-								<div class="val">{{ $p->ttl_following }}</div>
-								<div class="ttl">Following</div>
-							</a>
-						</li>
-						<li>
-							<a href="{{ url('/user/'.$p->id.'/followers') }}">
-								<div class="val">{{ $p->ttl_followers }}</div>
-								<div class="ttl">Followers</div>
-							</a>
-						</li>
-					</ul>
+			<div class="info">
+				<div class="user-name ctn-main-font ctn-standar" id="edit-name">{{ $p->name }}</div>
+				<div>
+					<p id="edit-about"><strong>{{ $p->username }}</strong></p>
+				</div>
+				<div>
+					<p id="edit-about">{{ $p->about }}</p>
+				</div>
+				<div class="other">
+					<a class="link" href="{{ $p->website }}" target="_blank">{{ $p->website }}</a>
+				</div>
+				<div>
+					<div class="other mrg-bottom">
+						<ul>
+							<li>
+								<a href="{{ url('/user/'.$p->id.'/story') }}">
+									<div class="val">{{ $p->ttl_story }}</div>
+									<div class="ttl">Stories</div>
+								</a>
+							</li>
+							<li>
+								<a href="{{ url('/user/'.$p->id.'/following') }}">
+									<div class="val">{{ $p->ttl_following }}</div>
+									<div class="ttl">Following</div>
+								</a>
+							</li>
+							<li>
+								<a href="{{ url('/user/'.$p->id.'/followers') }}">
+									<div class="val">{{ $p->ttl_followers }}</div>
+									<div class="ttl">Followers</div>
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -601,7 +601,7 @@
 
 .frame-story {
   position: relative;
-  width: calc(100% - 50px);
+  width: 1300px;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 5px;
@@ -973,7 +973,7 @@
 
 .frame-box {
   position: relative;
-  width: calc(100% - 50px)/4-20px;
+  width: 305px;
   margin: 10px;
   background-color: #fff;
   border-radius: 5px;
@@ -1311,9 +1311,9 @@
 
 .compose .main {
   position: relative;
-  padding: 20px;
   border-radius: 5px;
   overflow: hidden;
+  padding-bottom: 20px;
   background-color: #fff; }
   @media (max-width: 768px) {
     .compose .main {
@@ -1734,12 +1734,11 @@
   position: relative;
   top: 0;
   left: 0;
-  min-height: 50px;
+  min-height: 65px;
   width: 100%;
   cursor: default; }
   .sc-header .sc-place {
     width: 100%;
-    min-height: 40px;
     padding: 10px 0;
     background-color: #fff; }
     .sc-header .sc-place .sc-grid-3x {
@@ -1925,7 +1924,7 @@ a {
   margin: 0 auto; }
 
 .col-full {
-  width: calc(100% - 50px);
+  width: 1300px;
   margin: 0 auto; }
   @media (max-width: 768px) {
     .col-full {
@@ -2028,7 +2027,7 @@ a {
       display: -ms-grid;
       grid-template-columns: 150px 1fr 1fr;
       -ms-grid-columns: 150px 1fr 1fr;
-      width: calc(100% - 50px);
+      width: 1300px;
       margin: 0 auto; }
       @media (max-width: 768px) {
         #header .place .menu {
@@ -2214,7 +2213,7 @@ a {
         #body .post-grid .post-grid-2 {
           display: none; } }
   #body .post {
-    width: calc(100% - 50px);
+    width: 1300px;
     margin: 0 auto;
     column-count: 5;
     column-gap: 0;
@@ -2250,7 +2249,7 @@ a {
         -ms-column-gap: 0;
         padding-top: 10px; } }
   #body .post-flex {
-    width: calc(100% - 50px);
+    width: 1300px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap; }
