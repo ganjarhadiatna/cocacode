@@ -165,7 +165,7 @@
 				<div class="pos lef">
 					<div class="logo" >
 						<a href="{{ url('/') }}">
-							<img src="{{ asset('/img/C/5.png') }}" alt="Pictlr">
+							<img src="{{ asset('/img/C/6.png') }}" alt="Pictlr">
 						</a>
 					</div>
 				</div>

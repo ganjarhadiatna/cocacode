@@ -99,7 +99,11 @@ class MainController extends Controller
     }
     function composeStory()
     {
-        return view('compose.story', ['title' => 'New Story', 'path' => 'compose']);
+        return view('compose.story', ['title' => 'Add New Design', 'path' => 'compose']);
+    }
+    function composeImage()
+    {
+        return view('compose.image', ['title' => 'Add Picture', 'path' => 'compose']);
     }
     function composeBox()
     {

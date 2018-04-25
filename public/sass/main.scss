@@ -60,6 +60,12 @@ a {
 .col-800px {
 	@include col_set(800px);
 }
+.col-700px {
+	@include col_set(700px);
+}
+.col-600px {
+	@include col_set(600px);
+}
 
 .ctn-main-font {
 	font-family: "FontFirst", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -322,9 +328,9 @@ a {
 	}
 	.post {
 		@include col_full();
-		@include col_masonry(4);
+		@include col_masonry(5);
 		@media (max-width: $max-width) {
-			@include col_masonry(1);
+			@include col_masonry(2);
 		}
 	}
 	.post-flex {

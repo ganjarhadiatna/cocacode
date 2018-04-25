@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function() {
 
     /*compose*/
     Route::get('/compose/design', 'MainController@composeStory');
+    Route::get('/compose/design/{iddesign}/content/{token}', 'MainController@composeImage');
     Route::get('/compose/box', 'MainController@composeBox');
     Route::post('/story/image/upload', 'ImageController@upload');
     Route::post('/story/publish', 'StoryController@publish');

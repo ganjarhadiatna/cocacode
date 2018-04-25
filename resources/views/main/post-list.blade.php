@@ -1,6 +1,6 @@
 <div class="frame-post">
 	<div class="mid">
-		<div class="pos top-tool">
+		<div class="pos top-tool padding-bottom-10px">
 			<div class="grid grid-3x">
 				<div class="grid-1">
 					<a href="{{ url('/user/'.$story->id) }}">
@@ -8,41 +8,55 @@
 					</a>
 				</div>
 				<div class="grid-2">
-					<div class="ttl">
+					<div class="ttl-story">
 						<a href="{{ url('/user/'.$story->id) }}">
-							{{ $story->name }}
+							{{ $story->username }}
 						</a>
 					</div>
 				</div>
 				<div class="grid-3">
-					<button class="icn btn-circle btn-primary-color" onclick="opPostPopup('open', 'menu-popup', '{{ $story->idstory }}', '{{ $story->id }}', '{{ $title }}')">
+					<button class="icn btn btn-circle btn-primary-color btn-focus" onclick="opPostPopup('open', 'menu-popup', '{{ $story->idstory }}', '{{ $story->id }}', '{{ $title }}')">
 						<span class="fa fa-lg fa-ellipsis-h"></span>
 					</button>
 				</div>
 			</div>
 		</div>
 		<div class="mid-tool">
-			<a href="{{ url('/story/'.$story->idstory) }}">
+			<a href="{{ url('/design/'.$story->idstory) }}">
 				<div class="cover"></div>
-				<img src="{{ asset('/story/thumbnails/'.$story->cover) }}" alt="">
+				<img src="{{ asset('/story/thumbnails/'.$story->cover) }}" alt="pict" id="pict-{{ $story->idstory }}" key="{{ $story->idstory }}">
 			</a>
 		</div>
 	</div>
-	<div class="desc">
-		{{ $story->title }}
+	<div class="desc ctn-main-font">
+		{{ $story->description }}
 	</div>
 	<div class="pos bot-tool">
-		<div class="icn btn-grey2-color">
-			<span class="fas fa-lg fa-align-center"></span>
-			<span>{{ $story->views }}</span>
+		<div class="nts">
+			<div class="icn btn-grey2-color">
+				<span>{{ ($story->views + $story->ttl_comment + $story->ttl_save) }}</span>
+				<span>Notes</span>
+			</div>
 		</div>
-		<div class="icn btn-grey2-color">
-			<span class="far fa-lg fa-heart"></span>
-			<span>{{ $story->loves }}</span>
-		</div>
-		<div class="icn btn-grey2-color">
-			<span class="far fa-lg fa-comment"></span>
-			<span>{{ $story->ttl_comment }}</span>
+		<div class="bok">
+			<button class="btn btn-circle btn-sekunder-color btn-no-border" onclick="pictZoom({{ $story->idstory }})">
+				<span class="fas fa-lg fa-search-plus"></span>
+			</button>
+			@if (is_int($story->is_save))
+				<button class="btn btn-circle btn-main4-color btn-no-border"
+					id="bookmark-{{ $story->idstory }}" 
+					title="Remove from box?" 
+					onclick="removeBookmark('{{ $story->is_save }}','{{ $story->idstory }}')">
+					<span class="fas fa-lg fa-bookmark" id="ic"></span>
+				</button>
+			@else
+				<button class="btn btn-circle btn-main4-color btn-no-border" 
+					id="bookmark-{{ $story->idstory }}"
+					title="Save to box?" 
+					onclick="opSave('open','{{ $story->idstory }}')">
+					<span class="far fa-lg fa-bookmark" id="ic"></span>
+				</button>
+			@endif
 		</div>
 	</div>
 </div>

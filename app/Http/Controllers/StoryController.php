@@ -88,33 +88,14 @@ class StoryController extends Controller
     function publish(Request $request)
     {
     	$id = Auth::id();
-    	$cover = $request['cover'];
+    	$title = $request['title'];
     	$content = $request['content'];
     	$adult = 0;
     	$commenting = 0;
 
-    	//setting cover
-    	$this->validate($request, [
-    		'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
-    	]);
-    	$image = $request->file('cover');
-    	$chrc = array('[',']','@',' ','+','-','#','*','<','>','_','(',')',';',',','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
-	    $filename = $id.time().str_replace($chrc, '', $image->getClientOriginalName());
-
-	    //create thumbnail
-	    $destination = public_path('story/thumbnails/'.$filename);
-	    $img = Image::make($image->getRealPath());
-	    $img->resize(400, 400, function ($constraint) {
-	    	$constraint->aspectRatio();
-	    })->save($destination);
-
-	    //create image real
-	    $destination = public_path('story/covers/');
-	    $image->move($destination, $filename);
-
     	$data = array(
+            'title' => $title,
     		'description' => $content,
-    		'cover' => $filename,
     		'id' => $id
     	);
 
@@ -124,8 +105,8 @@ class StoryController extends Controller
             $this->mentions($request['tags'], $dt);
     		echo $dt;
     	} else {
-    		echo "failed";
-    	}
+    		echo 0;
+        }
     }
     function saveEditting(Request $request)
     {

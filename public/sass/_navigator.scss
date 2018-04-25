@@ -77,11 +77,6 @@
 			}
 			.txt-right {
 				text-align: right;
-				.btn {
-					width: 100px;
-					padding: 0 0;
-					float: right;
-				}
 			}
 			.ttl-head {
 				@include post_center();

@@ -46,9 +46,9 @@ class BoxModel extends Model
             'boxs.id',
             'users.username',
             'users.foto',
-            DB::raw('(select story.cover from bookmark left join story on bookmark.idstory = story.idstory where bookmark.idboxs = boxs.idboxs limit 1 offset 0) as cover1'),
-            DB::raw('(select story.cover from bookmark left join story on bookmark.idstory = story.idstory where bookmark.idboxs = boxs.idboxs limit 1 offset 1) as cover2'),
-            DB::raw('(select story.cover from bookmark left join story on bookmark.idstory = story.idstory where bookmark.idboxs = boxs.idboxs limit 1 offset 2) as cover3'),
+            DB::raw('(select image.image from bookmark left join image on bookmark.idstory = image.idstory where bookmark.idboxs = boxs.idboxs limit 1 offset 0) as cover1'),
+            DB::raw('(select image.image from bookmark left join image on bookmark.idstory = image.idstory where bookmark.idboxs = boxs.idboxs limit 1 offset 1) as cover2'),
+            DB::raw('(select image.image from bookmark left join image on bookmark.idstory = image.idstory where bookmark.idboxs = boxs.idboxs limit 1 offset 2) as cover3'),
             DB::raw('(select count(bookmark.idbookmark) from bookmark where bookmark.idboxs = boxs.idboxs) as ttl_save')
         )
         ->join('users','users.id', '=', 'boxs.id')

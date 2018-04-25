@@ -61,7 +61,7 @@
 			@else
 				<div>
 					@foreach ($topStory as $story)
-						@include('main.post')
+						@include('main.post-list')
 					@endforeach
 				</div>
 			@endif

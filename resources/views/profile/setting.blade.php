@@ -4,9 +4,13 @@
 @section('content')
 <div class="sc-header">
 	<div class="sc-place pos-fix">
-		<div class="col-full">
+		<div class="col-700px">
 			<div class="sc-grid sc-grid-3x">
-				<div class="sc-col-1"></div>
+				<div class="sc-col-1">
+					<button class="btn btn-circle btn-primary-color btn-focus" onclick="goBack()" type="button">
+						<span class="fa fa-lg fa-arrow-left"></span>
+					</button>
+				</div>
 				<div class="sc-col-2">
 					<h3 class="ttl-head ttl-sekunder-color">Profile Setting</h3>
 				</div>
@@ -17,7 +21,7 @@
 </div>
 <div class="frame-home frame-edit">
 	<div class="compose" id="create">
-		<div class="main">
+		<div class="main col-700px">
 			<div class="edit-body">
 				<div class="edit-block">
 					<p>Account</p>

@@ -663,7 +663,6 @@
 		@include bdr_bottom();
 	}
 	.edit-body {
-		padding: 0px 2.5% 30px 2.5%;
 		background-color: $sek-color;
 		.edit-block {
 			p {
@@ -831,7 +830,7 @@
 
 .frame-box {
 	position: relative;
-	width: (($col-full / 3) - 20px);
+	width: (($col-full / 4) - 20px);
 	margin: 10px;
 	background-color: #fff;
 	border-radius: 5px;

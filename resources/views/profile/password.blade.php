@@ -51,24 +51,30 @@
 		}
 	}
 </script>
-<div class="sc-header">
-	<div class="sc-place pos-fix">
-		<div class="col-full">
-			<div class="sc-grid sc-grid-3x">
-				<div class="sc-col-1"></div>
-				<div class="sc-col-2">
-					<h3 class="ttl-head ttl-sekunder-color">Change Password</h3>
+<form id="form-edit-profile" method="post" action="javascript:void(0)" onsubmit="savePassword()">
+	<div class="sc-header">
+		<div class="sc-place pos-fix">
+			<div class="col-700px">
+				<div class="sc-grid sc-grid-3x">
+					<div class="sc-col-1">
+						<button class="btn btn-circle btn-primary-color btn-focus" onclick="goBack()" type="button">
+							<span class="fa fa-lg fa-arrow-left"></span>
+						</button>
+					</div>
+					<div class="sc-col-2">
+						<h3 class="ttl-head ttl-sekunder-color">Change Password</h3>
+					</div>
+					<div class="sc-col-3 txt-right">
+						<input type="submit" name="edit-save" class="btn btn-main-color" value="Save">
+					</div>
 				</div>
-				<div class="sc-col-3"></div>
 			</div>
 		</div>
 	</div>
-</div>
-<div class="frame-home frame-edit">
-	<div class="compose" id="create">
-		<div class="main">
-			<div class="edit-body">
-				<form id="form-edit-profile" method="post" action="javascript:void(0)" onsubmit="savePassword()">
+	<div class="frame-home frame-edit">
+		<div class="compose" id="create">
+			<div class="main col-700px">
+				<div class="edit-body">
 					<div class="edit-block">
 						<div class="place-edit">
 							<div class="pe-1">
@@ -95,16 +101,10 @@
 								<input type="password" name="renew-password" class="txt txt-primary-color" id="renew-password" required="true" placeholder="Re-type New Password">
 							</div>
 						</div>
-						<div class="place-edit">
-							<div class="pe-2 pe-btn">
-								<input type="button" name="edit-save" class="btn btn-primary-color" value="Cancel" onclick="goBack()">
-								<input type="submit" name="edit-save" class="btn btn-main-color" value="Save">
-							</div>
-						</div>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</form>
 @endsection

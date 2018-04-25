@@ -52,10 +52,11 @@ class StoryModel extends Model
         } else {
             $id = 0;
         }
-        return DB::table('story')
+        return DB::table('image')
         ->select(
+            'image.idimage',
+            'image.image as cover',
             'story.idstory',
-            'story.cover',
             'story.created',
             'story.description',
             'story.views',
@@ -71,7 +72,8 @@ class StoryModel extends Model
             DB::raw('(select count(bookmark.idbookmark) from bookmark where bookmark.idstory = story.idstory) as ttl_save'),
             DB::raw('(select bookmark.idbookmark from bookmark where bookmark.idstory = story.idstory and bookmark.id = '.$id.' limit 1) as is_save')
         )
-        ->join('users','users.id', '=', 'story.id')
+        ->join('story','story.idstory', '=', 'image.idstory')
+        ->join('users','users.id', '=', 'image.id')
         ->where('story.idstory', $idstory)
         ->get();
     }
@@ -82,10 +84,11 @@ class StoryModel extends Model
         } else {
             $id = 0;
         }
-        return DB::table('story')
+        return DB::table('image')
         ->select(
+            'image.idimage',
+            'image.image as cover',
             'story.idstory',
-            'story.cover',
             'story.created',
             'story.description',
             'story.views',
@@ -99,7 +102,8 @@ class StoryModel extends Model
             DB::raw('(select count(bookmark.idbookmark) from bookmark where bookmark.idstory = story.idstory) as ttl_save'),
             DB::raw('(select bookmark.idbookmark from bookmark where bookmark.idstory = story.idstory and bookmark.id = '.$id.' limit 1) as is_save')
         )
-        ->join('users','users.id', '=', 'story.id')
+        ->join('story','story.idstory', '=', 'image.idstory')
+        ->join('users','users.id', '=', 'image.id')
         ->orderBy('story.idstory', 'desc')
         ->paginate($limit);
     }
@@ -110,10 +114,11 @@ class StoryModel extends Model
         } else {
             $id = 0;
         }
-        return DB::table('story')
+        return DB::table('image')
         ->select(
+            'image.idimage',
+            'image.image as cover',
             'story.idstory',
-            'story.cover',
             'story.created',
             'story.description',
             'story.views',
@@ -127,7 +132,8 @@ class StoryModel extends Model
             DB::raw('(select count(bookmark.idbookmark) from bookmark where bookmark.idstory = story.idstory) as ttl_save'),
             DB::raw('(select bookmark.idbookmark from bookmark where bookmark.idstory = story.idstory and bookmark.id = '.$id.' limit 1) as is_save')
         )
-        ->join('users','users.id', '=', 'story.id')
+        ->join('story','story.idstory', '=', 'image.idstory')
+        ->join('users','users.id', '=', 'image.id')
         ->where('story.idstory','!=',$idstory)
         ->orderBy('story.idstory', 'desc')
         ->paginate($limit);
@@ -139,10 +145,11 @@ class StoryModel extends Model
         } else {
             $id = 0;
         }
-        return DB::table('story')
+        return DB::table('image')
         ->select(
+            'image.idimage',
+            'image.image as cover',
             'story.idstory',
-            'story.cover',
             'story.created',
             'story.description',
             'story.views',
@@ -156,7 +163,8 @@ class StoryModel extends Model
             DB::raw('(select count(bookmark.idbookmark) from bookmark where bookmark.idstory = story.idstory) as ttl_save'),
             DB::raw('(select bookmark.idbookmark from bookmark where bookmark.idstory = story.idstory and bookmark.id = '.$id.' limit 1) as is_save')
         )
-        ->join('users','users.id', '=', 'story.id')
+        ->join('story','story.idstory', '=', 'image.idstory')
+        ->join('users','users.id', '=', 'image.id')
         ->orderBy('ttl_comment', 'desc')
         ->paginate($limit);
     }
@@ -168,10 +176,11 @@ class StoryModel extends Model
         } else {
             $id = 0;
         }
-        return DB::table('story')
+        return DB::table('image')
         ->select(
+            'image.idimage',
+            'image.image as cover',
             'story.idstory',
-            'story.cover',
             'story.created',
             'story.description',
             'story.views',
@@ -185,7 +194,8 @@ class StoryModel extends Model
             DB::raw('(select count(bookmark.idbookmark) from bookmark where bookmark.idstory = story.idstory) as ttl_save'),
             DB::raw('(select bookmark.idbookmark from bookmark where bookmark.idstory = story.idstory and bookmark.id = '.$id.' limit 1) as is_save')
         )
-        ->join('users','users.id', '=', 'story.id')
+        ->join('story','story.idstory', '=', 'image.idstory')
+        ->join('users','users.id', '=', 'image.id')
         ->orderBy('ttl_comment', 'desc')
         ->paginate($limit);
     }
@@ -197,10 +207,11 @@ class StoryModel extends Model
             $id = 0;
         }
         $searchValues = preg_split('/\s+/', $ctr, -1, PREG_SPLIT_NO_EMPTY);
-        return DB::table('story')
+        return DB::table('image')
         ->select(
+            'image.idimage',
+            'image.image as cover',
             'story.idstory',
-            'story.cover',
             'story.created',
             'story.description',
             'story.views',
@@ -214,7 +225,8 @@ class StoryModel extends Model
             DB::raw('(select count(bookmark.idbookmark) from bookmark where bookmark.idstory = story.idstory) as ttl_save'),
             DB::raw('(select bookmark.idbookmark from bookmark where bookmark.idstory = story.idstory and bookmark.id = '.$id.' limit 1) as is_save')
         )
-        ->join('users','users.id', '=', 'story.id')
+        ->join('story','story.idstory', '=', 'image.idstory')
+        ->join('users','users.id', '=', 'image.id')
         ->where('story.description','like',"%$ctr%")
         ->orWhere('users.name','like',"%$ctr%")
         ->orWhere(function ($q) use ($searchValues)
@@ -235,8 +247,9 @@ class StoryModel extends Model
         return DB::table('tags')
         ->select(
             'tags.idtags',
+            'image.idimage',
+            'image.image as cover',
             'story.idstory',
-            'story.cover',
             'story.created',
             'story.description',
             'story.views',
@@ -251,7 +264,8 @@ class StoryModel extends Model
             DB::raw('(select bookmark.idbookmark from bookmark where bookmark.idstory = story.idstory and bookmark.id = '.$id.' limit 1) as is_save')
         )
         ->join('story','story.idstory', '=', 'tags.idstory')
-        ->join('users','users.id', '=', 'story.id')
+        ->join('image','image.idstory', '=', 'tags.idstory')
+        ->join('users','users.id', '=', 'image.id')
         ->where('tags.tag', 'like', "%{$ctr}%")
         ->orderBy('tags.idtags', 'desc')
         ->groupBy('tags.idstory')
@@ -267,8 +281,9 @@ class StoryModel extends Model
         return DB::table('category')
         ->select(
             'category.idcategory',
+            'image.idimage',
+            'image.image as cover',
             'story.idstory',
-            'story.cover',
             'story.created',
             'story.description',
             'story.views',
@@ -283,7 +298,8 @@ class StoryModel extends Model
             DB::raw('(select bookmark.idbookmark from bookmark where bookmark.idstory = story.idstory and bookmark.id = '.$id.' limit 1) as is_save')
         )
         ->join('story','story.idcategory', '=', 'category.idcategory')
-        ->join('users','users.id', '=', 'story.id')
+        ->join('story','story.idstory', '=', 'image.idstory')
+        ->join('users','users.id', '=', 'image.id')
         ->where('category.title', $ctr)
         ->orderBy('story.idstory', 'desc')
         ->paginate($limit);
@@ -295,10 +311,11 @@ class StoryModel extends Model
         } else {
             $id = 0;
         }
-        return DB::table('story')
+        return DB::table('image')
         ->select(
+            'image.idimage',
+            'image.image as cover',
             'story.idstory',
-            'story.cover',
             'story.created',
             'story.description',
             'story.views',
@@ -312,7 +329,8 @@ class StoryModel extends Model
             DB::raw('(select count(bookmark.idbookmark) from bookmark where bookmark.idstory = story.idstory) as ttl_save'),
             DB::raw('(select bookmark.idbookmark from bookmark where bookmark.idstory = story.idstory and bookmark.id = '.$id.' limit 1) as is_save')
         )
-        ->join('users','users.id', '=', 'story.id')
+        ->join('story','story.idstory', '=', 'image.idstory')
+        ->join('users','users.id', '=', 'image.id')
         ->where('story.id', $id)
         ->orWhere(function ($q) use ($profile)
         {
@@ -330,10 +348,11 @@ class StoryModel extends Model
         } else {
             $id = 0;
         }
-        return DB::table('story')
+        return DB::table('image')
         ->select(
+            'image.idimage',
+            'image.image as cover',
             'story.idstory',
-            'story.cover',
             'story.created',
             'story.description',
             'story.views',
@@ -347,7 +366,8 @@ class StoryModel extends Model
             DB::raw('(select count(bookmark.idbookmark) from bookmark where bookmark.idstory = story.idstory) as ttl_save'),
             DB::raw('(select bookmark.idbookmark from bookmark where bookmark.idstory = story.idstory and bookmark.id = '.$id.' limit 1) as is_save')
         )
-        ->join('users','users.id', '=', 'story.id')
+        ->join('story','story.idstory', '=', 'image.idstory')
+        ->join('users','users.id', '=', 'image.id')
         ->where('story.id', $iduser)
         ->orderBy('story.idstory', 'desc')
         ->paginate($limit);
@@ -362,8 +382,9 @@ class StoryModel extends Model
         return DB::table('bookmark')
         ->select(
             'bookmark.idbookmark',
+            'image.idimage',
+            'image.image as cover',
             'story.idstory',
-            'story.cover',
             'story.created',
             'story.description',
             'story.views',
@@ -378,7 +399,8 @@ class StoryModel extends Model
             DB::raw('(select bookmark.idbookmark from bookmark where bookmark.idstory = story.idstory and bookmark.id = '.$id.' limit 1) as is_save')
         )
         ->join('story','story.idstory', '=', 'bookmark.idstory')
-        ->join('users','users.id', '=', 'story.id')
+        ->join('image','image.idstory', '=', 'bookmark.idstory')
+        ->join('users','users.id', '=', 'image.id')
         ->where('bookmark.idboxs', $idboxs)
         ->orderBy('bookmark.idbookmark', 'desc')
         ->paginate($limit);

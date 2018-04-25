@@ -18,12 +18,12 @@
 				<div class="sc-col-1">
 					@if (Auth::id() == $p->id)
 						<a href="{{ url('/me/setting') }}">
-							<button classfollown btn-circle btn-sekunder-color">
+							<button class="btn btn-circle btn-primary-color btn-focus">
 								<span class="fas fa-lg fa-cog"></span>
 							</button>
 						</a>
-						<a href="followrl('/me/setting/profile') }}">
-							<button class="btn btn-circle btn-main2-color">
+						<a href="{{ url('/me/setting/profile') }}">
+							<button class="btn btn-circle btn-primary-color btn-focus">
 								<span class="fas fa-lg fa-pencil-alt"></span>
 							</button>
 						</a>

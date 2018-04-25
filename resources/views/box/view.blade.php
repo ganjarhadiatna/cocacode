@@ -34,8 +34,13 @@
 <div class="sc-header">
 	<div class="sc-place pos-fix">
 		<div class="col-900px">
-			<div class="sc-grid sc-grid-3x">
+			<div class="sc-grid sc-grid-2x">
 				<div class="sc-col-1">
+					@foreach ($boxDetail as $dt)
+						<h3 class="ttl ttl-head-2 ttl-sekunder-color">{{ $dt->title }}</h3>
+					@endforeach
+                </div>
+                <div class="sc-col-2 txt-center">
 					@if (Auth::id())
                         <button class="btn btn-circle btn-main2-color btn-focus" onclick="opQuestionDeleteBox('{{ $idboxs }}')">
                             <span class="far fa-lg fa-trash-alt"></span>
@@ -47,17 +52,6 @@
                         </a>
 					@endif
                 </div>
-                <div class="sc-col-2 txt-center">
-                    <h3 class="ttl ttl-head-2 ttl-sekunder-color">Box</h3>
-                </div>
-				<div class="sc-col-3 txt-right">
-					<a href="{{ url('/compose/design') }}">
-                        <button class="btn btn-main2-color">
-                            <span class="fas fa-lg fa-plus"></span>
-                            <span>Design</span>
-                        </button>
-                    </a>
-				</div>
 			</div>
 		</div>
 	</div>

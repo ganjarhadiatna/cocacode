@@ -43,7 +43,7 @@
 			if (data === 'success') {
 				window.location = '{{ url("/me") }}';
 			} else {
-				opAlert('open', "failed to Saving, please try again.");
+				opAlert('open', "failed to saving, please try again.");
 			}
 			close_progress();
 		})
@@ -75,32 +75,38 @@
 		}
 	}
 </script>
-<div class="sc-header">
-	<div class="sc-place pos-fix">
-		<div class="col-full">
-			<div class="sc-grid sc-grid-3x">
-				<div class="sc-col-1"></div>
-				<div class="sc-col-2">
-					<h3 class="ttl-head ttl-sekunder-color">Edit Profile</h3>
+@foreach ($profile as $p)
+<form id="form-edit-profile" method="post" action="javascript:void(0)" enctype="multipart/form-data" onsubmit="saveProfile()">
+	<div class="sc-header">
+		<div class="sc-place pos-fix">
+			<div class="col-700px">
+				<div class="sc-grid sc-grid-3x">
+					<div class="sc-col-1">
+						<button class="btn btn-circle btn-primary-color btn-focus" onclick="goBack()" type="button">
+							<span class="fa fa-lg fa-arrow-left"></span>
+						</button>
+					</div>
+					<div class="sc-col-2">
+						<h3 class="ttl-head ttl-sekunder-color">Edit Profile</h3>
+					</div>
+					<div class="sc-col-3 txt-right">
+						<input type="submit" name="edit-save" class="btn btn-main-color" value="Save">
+					</div>
 				</div>
-				<div class="sc-col-3"></div>
 			</div>
 		</div>
 	</div>
-</div>
-<div class="frame-home frame-edit">
-	<div class="compose" id="create">
-		<div class="main">
-			<div class="edit-body">
-				@foreach ($profile as $p)
-				<form id="form-edit-profile" method="post" action="javascript:void(0)" enctype="multipart/form-data" onsubmit="saveProfile()">
+	<div class="frame-home frame-edit">
+		<div class="compose" id="create">
+			<div class="main col-700px">
+				<div class="edit-body">
 					<div class="edit-block">
 						<div>
 							<div class="change" id="change">
 								<div class="foto image image-200px image-circle" id="place-picture" style="background-image: url({{ asset('/profile/photos/'.$p->foto) }});"></div>
 								<input type="file" name="change-picture" id="change-picture" onchange="loadFoto()">
 								<label for="change-picture">
-									<div class="btn btn-main3-color" id="btn-save-foto">
+									<div class="btn btn-sekunder-color" id="btn-save-foto" type="button">
 										<span class="fas fa-lg fa-camera"></span>
 									</div>
 								</label>
@@ -146,17 +152,11 @@
 								<input type="text" name="edit-website" class="txt txt-primary-color" id="edit-website" value="{{ $p->website }}" placeholder="Link">
 							</div>
 						</div>
-						<div class="place-edit">
-							<div class="pe-2 pe-btn">
-								<input type="button" name="edit-save" class="btn btn-primary-color" value="Cancel" onclick="goBack()">
-								<input type="submit" name="edit-save" class="btn btn-main-color" value="Save Edit">
-							</div>
-						</div>
 					</div>
-				</form>
-				@endforeach
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</form>
+@endforeach
 @endsection

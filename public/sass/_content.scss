@@ -242,13 +242,10 @@
 	}
 }
 
-//story
-//
 //compose
 .compose {
 	.main {
 		position: relative;
-		@include col_set(600px);
 		padding: 20px;
 		border-radius: 5px;
 		overflow: hidden;
@@ -265,14 +262,12 @@
 			width: 100%;
 		}
 		.create-body {
-			position: relative;
 			.create-block {
 				position: relative;
 				width: calc(100% - 4px);
 				background-color: $sek-color;
-				padding: 15px 2px;
+				padding: 0 2px;
 				border-radius: 3px;
-				margin-bottom: 15px;
 				&.no-pad {
 					padding: 0px 2px;
 				}
@@ -396,43 +391,19 @@
 			position: relative;
 			overflow: hidden;
 			border-radius: 3px;
-			.tool {
-				position: absolute;
-				z-index: 10;
-				cursor: default;
-				display: none;
-				ul {
-					li {
-						position: relative;
-						width: 30px;
-						height: 30px;
-						line-height: 30px;
-						text-align: center;
-						list-style: none;
-
-						display: inline-block;
-
-						border-radius: 100%;
-						border: 1px rgba(0,0,0,0.1)  solid;
-
-						background-color: $sek-color;
-						color: $txt-sek-color;
-
-						font-size: 12px;
-						cursor: pointer;
-						&:hover {
-							border: 1px $txt-sek-color  solid;
-							color: $txt-min-color;
-							transition: 0.3s;
-						}
-						label {
-							cursor: pointer;
-						}
-					}
-					.get {
-						display: none;
-					}
+			width: calc(100% - 4px);
+			padding: 0 2px;
+			.grid {
+				@include grid_2x(1fr, 300px);
+				.grid-1 {
+					position: relative;
+					width: calc(100% - 20px);
+					padding-right: 20px;
+					@include column_1();
 				}
+				.grid-2 {
+					@include column_2();
+				}	
 			}
 		}
 	}
