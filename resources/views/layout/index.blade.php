@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- ICON -->
-    <link href="{{ asset('/img/C/5.png') }}" rel='SHORTCUT ICON'/>
+    <link href="{{ asset('/img/C/6.png') }}" rel='SHORTCUT ICON'/>
 
 	<!-- SASS -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/css/fontawesome-all.min.css') }}">
@@ -205,11 +205,6 @@
 							<div class="notif-icn absolute fas fa-lg fa-circle" id="main-notif-sign"></div>
 							<span class="fas fa-lg fa-bell"></span>
 						</button>
-						<a href="{{ url('/box') }}">
-							<button class="btn-icn btn btn-circle btn-main2-color" id="box" key="hide">
-								<span class="fas fa-lg fa-box-open"></span>
-							</button>
-						</a>
 						@foreach (ProfileModel::UserSmallData(Auth::id()) as $dt)
 							<a href="{{ url('/user/'.$dt->id) }}">
 								<button class="btn-icn pp btn btn-main2-color btn-radius" id="profile">

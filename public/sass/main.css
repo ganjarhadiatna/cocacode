@@ -69,7 +69,7 @@
     border-radius: 100%;
     text-align: center; }
   .btn.btn-main-color {
-    background-color: #9a0000;
+    background-color: #ad081b;
     color: #fff; }
   .btn.btn-main2-color {
     background-color: transparent;
@@ -82,7 +82,7 @@
     color: #fff; }
   .btn.btn-main4-color {
     background-color: #fff;
-    color: #9a0000; }
+    color: #ad081b; }
   .btn.btn-sekunder-color {
     background-color: #fff;
     color: rgba(0, 0, 0, 0.54);
@@ -267,7 +267,7 @@
       font-weight: 600;
       color: rgba(0, 0, 0, 0.54); }
       .frame-post .mid .top-tool .main-ttl:hover {
-        color: #9a0000; }
+        color: #ad081b; }
     .frame-post .mid .top-tool .ttl-story a {
       position: absolute;
       top: 50%;
@@ -280,7 +280,7 @@
       font-weight: 600;
       color: rgba(0, 0, 0, 0.54); }
       .frame-post .mid .top-tool .ttl-story a:hover {
-        color: #9a0000; }
+        color: #ad081b; }
     .frame-post .mid .top-tool .icn {
       width: 35px;
       height: 35px;
@@ -500,7 +500,7 @@
       .frame-follow .ff-mid .fl-ttl a {
         color: rgba(0, 0, 0, 0.54); }
         .frame-follow .ff-mid .fl-ttl a:hover {
-          color: #9a0000; }
+          color: #ad081b; }
   .frame-follow .ff-bot {
     grid-column: 3;
     -ms-grid-column: 3; }
@@ -520,7 +520,7 @@
     .frame-trending .ttl-head a {
       font-size: 14px;
       font-weight: 600;
-      color: #9a0000; }
+      color: #ad081b; }
       .frame-trending .ttl-head a:hover {
         text-decoration: underline; }
   .frame-trending .ttl-ctn {
@@ -724,7 +724,7 @@
           .frame-story .bot .profile .info .name a {
             color: rgba(0, 0, 0, 0.54); }
             .frame-story .bot .profile .info .name a:hover {
-              color: #9a0000; }
+              color: #ad081b; }
       .frame-story .bot .profile .tool {
         grid-column: 3;
         -ms-grid-column: 3; }
@@ -775,7 +775,7 @@
       color: rgba(0, 0, 0, 0.54);
       font-size: 16px; }
       .frame-comment .desk a:hover {
-        color: #9a0000; }
+        color: #ad081b; }
 
 .frame-profile {
   position: relative;
@@ -1232,7 +1232,7 @@
     font-size: 14px;
     font-weight: 600; }
     .more-menu .mn li a:hover {
-      color: #9a0000; }
+      color: #ad081b; }
 
 .notifications {
   position: absolute;
@@ -1296,7 +1296,7 @@
     cursor: pointer; }
     .add-menu ul li:hover {
       background-color: #f0f0f0;
-      color: #9a0000; }
+      color: #ad081b; }
     .add-menu ul li.bdr-bottom {
       border-bottom: 1px rgba(0, 0, 0, 0.1) solid; }
     .add-menu ul li .icn {
@@ -2089,7 +2089,7 @@ a {
               color: rgba(0, 0, 0, 0.84); }
             #header .place .menu .mid .main-search.select .btn {
               background-color: rgba(225, 225, 225, 0.54);
-              color: #9a0000; }
+              color: #ad081b; }
           #header .place .menu .mid .main-search .txt {
             width: calc(100% - 70px);
             float: right;

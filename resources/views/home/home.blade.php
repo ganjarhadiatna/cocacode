@@ -4,7 +4,7 @@
 @section('content')
 <div class="frame-guess">
 	<div class="block bdr-bottom">
-		<div class="logo" style="background-image: url('{{ asset('/img/CocaCode/2.png') }}')"></div>
+		<div class="logo" style="background-image: url('{{ asset('/img/CocaCode/3.png') }}')"></div>
 		<div class="ttl ctn-main-font ctn-small ctn-center padding-10px">
 			Share What You Can Do.
 		</div>

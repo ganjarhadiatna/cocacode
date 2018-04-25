@@ -7,7 +7,7 @@
 		<div class="sc-block">
 			<div class="sc-col-1">
 				<h1 class="ttl-head ctn-main-font ctn-big">
-					What's New on {{ $title }}
+					{{ $title }}
 				</h1>
 			</div>
 		</div>

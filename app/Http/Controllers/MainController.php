@@ -19,14 +19,10 @@ class MainController extends Controller
             $id = Auth::id();
             $profile = FollowModel::GetAllFollowing($id);
             $topStory = StoryModel::PagTimelinesStory(20, $profile, $id);
-            $topUsers = ProfileModel::TopUsers($id, 10);
-            $topTags = TagModel::TopTags(10);
             return view('home.index', [
                 'title' => 'Official Site',
                 'path' => 'home',
-                'topStory' => $topStory,
-                'topTags' => $topTags,
-                'topUsers' => $topUsers
+                'topStory' => $topStory
             ]);
         } else {
             return view('home.home', [
