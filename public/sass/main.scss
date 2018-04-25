@@ -118,7 +118,7 @@ a {
 	height: 60px;
 	background-color: $sek-color;
 	@media (max-width: $max-width) {
-		height: 95px;
+		height: 100px;
 	}
 	.place {
 		position: fixed;
@@ -132,10 +132,10 @@ a {
 			position: relative;
 			padding: 10px 0;
 			cursor: default;
-			@include grid_3x(60px, 1fr, 1fr);
+			@include grid_3x(150px, 1fr, 1fr);
 			@include col_full();
 			@media (max-width: $max-width) {
-				@include grid_2x(100px, 1fr);
+				@include grid_2x(60px, 1fr);
 			}
 			#main-search {
 				&.hide {
@@ -156,10 +156,11 @@ a {
 				@include column_1();
 				.logo {
 					position: relative;
-					width: 40px;
+					/*width: 40px;
+					border-radius: 100%;*/
+					width: 130px;
 					height: 40px;
 					overflow: hidden;
-					border-radius: 100%;
 					img {
 						@include post_top();
 						width: 100%;
@@ -171,7 +172,7 @@ a {
 				text-align: left;
 				@media (max-width: $max-width) {
 					position: fixed;
-					top: 55px;
+					top: 61px;
 					left: 0;
 					width: calc(100% - 20px);
 					padding: 7.5px 10px;
@@ -253,6 +254,9 @@ a {
 					text-align: center;
 					overflow: hidden;
 					@media (max-width: $max-width) {
+						height: 40px;
+					}
+					@media (max-width: $std-width) {
 						width: 40px;
 						height: 40px;
 					}
@@ -260,7 +264,7 @@ a {
 						position: relative;
 						top: 2.5px;
 						display: inline-block;
-						@media (max-width: $max-width) {
+						@media (max-width: $std-width) {
 							top: 5px;
 						}
 					}
@@ -331,6 +335,11 @@ a {
 		@include col_masonry(5);
 		@media (max-width: $max-width) {
 			@include col_masonry(2);
+			padding-top: 10px;
+		}
+		@media (max-width: $min-width) {
+			@include col_masonry(1);
+			padding-top: 10px;
 		}
 	}
 	.post-flex {

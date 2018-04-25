@@ -37,7 +37,7 @@
 </div>
 @endif
 
-<div class="padding-10px">
+<div>
 	@if (count($topStory) == 0)
 		@include('main.post-empty')	
 	@else

@@ -1,5 +1,29 @@
 <div class="frame-post">
 	<div class="mid">
+		<div class="bot-tool">
+			<div class="nts">
+				<button class="zoom btn btn-circle btn-sekunder-color btn-no-border" onclick="pictZoom({{ $story->idstory }})">
+					<span class="fas fa-lg fa-search-plus"></span>
+				</button>
+			</div>
+			<div class="bok">
+				@if (is_int($story->is_save))
+					<button class="btn btn-circle btn-main-color btn-no-border"
+						id="bookmark-{{ $story->idstory }}" 
+						title="Remove from box?" 
+						onclick="removeBookmark('{{ $story->is_save }}','{{ $story->idstory }}')">
+						<span class="fas fa-lg fa-bookmark" id="ic"></span>
+					</button>
+				@else
+					<button class="btn btn-circle btn-main-color btn-no-border" 
+						id="bookmark-{{ $story->idstory }}"
+						title="Save to box?" 
+						onclick="opSave('open','{{ $story->idstory }}')">
+						<span class="far fa-lg fa-bookmark" id="ic"></span>
+					</button>
+				@endif
+			</div>
+		</div>
 		<div class="mid-tool">
 			<a href="{{ url('/design/'.$story->idstory) }}">
 				<div class="cover"></div>
@@ -9,33 +33,5 @@
 	</div>
 	<div class="desc ctn-main-font">
 		{{ $story->description }}
-	</div>
-	<div class="pos bot-tool">
-		<div class="nts">
-			<div class="icn btn-grey2-color">
-				<span>{{ ($story->views + $story->ttl_comment + $story->ttl_save) }}</span>
-				<span>Notes</span>
-			</div>
-		</div>
-		<div class="bok">
-			<button class="btn btn-circle btn-sekunder-color btn-no-border" onclick="pictZoom({{ $story->idstory }})">
-				<span class="fas fa-lg fa-search-plus"></span>
-			</button>
-			@if (is_int($story->is_save))
-				<button class="btn btn-circle btn-main4-color btn-no-border"
-					id="bookmark-{{ $story->idstory }}" 
-					title="Remove from box?" 
-					onclick="removeBookmark('{{ $story->is_save }}','{{ $story->idstory }}')">
-					<span class="fas fa-lg fa-bookmark" id="ic"></span>
-				</button>
-			@else
-				<button class="btn btn-circle btn-main4-color btn-no-border" 
-					id="bookmark-{{ $story->idstory }}"
-					title="Save to box?" 
-					onclick="opSave('open','{{ $story->idstory }}')">
-					<span class="far fa-lg fa-bookmark" id="ic"></span>
-				</button>
-			@endif
-		</div>
 	</div>
 </div>

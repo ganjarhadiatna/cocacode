@@ -165,7 +165,7 @@
 				<div class="pos lef">
 					<div class="logo" >
 						<a href="{{ url('/') }}">
-							<img src="{{ asset('/img/C/6.png') }}" alt="Pictlr">
+							<img src="{{ asset('/img/CocaCode/3.png') }}" alt="Pictlr">
 						</a>
 					</div>
 				</div>
@@ -203,7 +203,7 @@
 					@else
 						<button class="btn-icn btn btn-circle btn-main2-color" id="op-notif" key="hide">
 							<div class="notif-icn absolute fas fa-lg fa-circle" id="main-notif-sign"></div>
-							<span class="fas fa-lg fa-bell"></span>
+							<span class="far fa-lg fa-bell"></span>
 						</button>
 						@foreach (ProfileModel::UserSmallData(Auth::id()) as $dt)
 							<a href="{{ url('/user/'.$dt->id) }}">

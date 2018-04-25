@@ -2,7 +2,7 @@
 @section('title',$title)
 @section('path', $path)
 @section('content')
-<div class="sc-header padding-10px">
+<div class="sc-header padding-20px">
 	<div class="sc-place">
 		<div class="sc-block">
 			<div class="sc-col-1">
@@ -13,7 +13,6 @@
 		</div>
 	</div>
 </div>
-<div class="padding-bottom-20px"></div>
 <div>
 	<div>
 		@if (count($topStory) == 0)
