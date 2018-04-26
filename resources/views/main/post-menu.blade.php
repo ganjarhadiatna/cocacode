@@ -90,7 +90,11 @@
 				<li onclick="pictZoom('+idimage+')">Zoomed</li>\
 				';
 			} else {
-				var menu = '<li onclick="viewPost('+idboxs+')">View Design<li>Report Design</li>';
+				var menu = '\
+				<li onclick="viewDesign('+idboxs+','+idimage+')">View Design</li>\
+				<li onclick="addBookmark('+idimage+')">Save Design</li>\
+				<li onclick="pictZoom('+idimage+')">Zoomed</li>\
+				';
 			}
 			$('.content-popup .place-popup #val').html(menu);
 		} else {
