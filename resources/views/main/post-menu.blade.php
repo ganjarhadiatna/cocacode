@@ -72,7 +72,10 @@
 				<li onclick="opQuestionPost('+idboxs+')">Delete Boxs</li>\
 				';
 			} else {
-				var menu = '<li onclick="viewPost('+idboxs+')">View Design<li>Report Design</li>';
+				var menu = '\
+				<li onclick="viewPost('+idboxs+')">View Box</li>\
+				<li>Report</li>\
+				';
 			}
 			$('.content-popup .place-popup #val').html(menu);
 		} else {
@@ -94,6 +97,7 @@
 				<li onclick="viewDesign('+idboxs+','+idimage+')">View Design</li>\
 				<li onclick="addBookmark('+idimage+')">Save Design</li>\
 				<li onclick="pictZoom('+idimage+')">Zoomed</li>\
+				<li>Report</li>\
 				';
 			}
 			$('.content-popup .place-popup #val').html(menu);
