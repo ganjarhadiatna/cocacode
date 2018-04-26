@@ -275,7 +275,6 @@ class BoxsModel extends Model
         ->join('users','users.id', '=', 'image.id')
         ->where('tags.tag', 'like', "%{$ctr}%")
         ->orderBy('tags.idtags', 'desc')
-        ->groupBy('tags.idboxs')
         ->paginate($limit);
     }
     function scopePagCtrboxs($query, $ctr, $limit)
