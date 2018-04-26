@@ -38,6 +38,12 @@ class BoxsModel extends Model
         ->where('boxs.id', $id)
         ->delete();
     }
+    function scopeCheckBoxs($query, $idboxs)
+    {
+        return DB::table('boxs')
+        ->where('boxs.idboxs', $idboxs)
+        ->value('boxs.idboxs');
+    }
     function scopeUpdateViewsBoxs($query, $idboxs)
     {
         $no = (DB::table('boxs')->where('idboxs', $idboxs)->value('views'))+1;

@@ -14,6 +14,12 @@ class ImageModel extends Model
         return DB::table('image')
         ->insert($data);
     }
+    function scopeDeleteImage($query, $idimage)
+    {
+        return DB::table('image')
+        ->where('idimage', $idimage)
+        ->delete();
+    }
     function scopeGetImage($query, $idimage)
     {
         return DB::table('image')
@@ -27,7 +33,8 @@ class ImageModel extends Model
             'idimage',
             'image',
             'id',
-            'idboxs')
+            'idboxs'
+        )
         ->where('idboxs', $idboxs)
         ->get();
     }

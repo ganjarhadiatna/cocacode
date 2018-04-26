@@ -24,10 +24,10 @@
 	}
 	function rvImage(url, idimage) {
 		var review = '\
-		<div class="frame-review">\
+		<div class="frame-review" id="fr-'+idimage+'">\
 			<button class="del btn btn-circle btn-black-color btn-focus"\
 				title="delete this picture"\
-				onclick="rmImage('+idimage+')">\
+				onclick="opQuestionDesign('+idimage+')">\
 				<span class="fa fa-lg fa-times"></span>\
 			</button>\
 			<div class="image image-all" style="background-image: url('+url+')"></div>\
@@ -52,7 +52,7 @@
 			contentType: false,
 			type: 'post',
 			beforeSend: function() {
-				$('#progressbar').show();
+				open_progress('Uploading your design...');
 			}
 	    })
 	    .done(function(data) {
@@ -79,8 +79,41 @@
 			//console.log(data.responseJSON);
 	    })
 		.always(function() {
-			$('#progressbar').hide();
+			close_progress();
 		});
+	}
+	function delImage(idimage) {
+		$.ajax({
+	    	url: '{{ url("/box/image/delete") }}',
+			data: {'idimage':idimage},
+			type: 'post',
+			beforeSend: function() {
+				opQuestion('hide');
+				open_progress('Deleting your design...');
+			}
+	    })
+	    .done(function(data) {
+			if (data == 1) {
+				$('#place-review-image').find('#fr-'+idimage).remove();
+			} else if (data == 22) {
+				opAlert('open', 'Failed to delete, please check your file.');
+			} else if (data == 99) {
+				opAlert('open', 'Failed to delete, please try again later.');
+			} else {
+				opAlert('open', 'There is an erro, please try again.');
+			}
+			//console.log(data);
+	    })
+	    .fail(function(data) {
+	    	opAlert('open', 'We can not delete your picture, please try again.');
+			//console.log(data.responseJSON);
+	    })
+		.always(function() {
+			close_progress();
+		});
+	}
+	function opQuestionDesign(idimage) {
+		opQuestion('open','Are you sure you want to delete this design ?', 'delImage("'+idimage+'")');
 	}
     $(document).ready(function() {
 		$('#progressbar').progressbar({
@@ -132,10 +165,10 @@
 								</div>
 							@else
 								@foreach ($image as $dt)
-									<div class="frame-review">
+									<div class="frame-review" id="fr-{{ $dt->idimage }}">
 										<button class="del btn btn-circle btn-black-color btn-focus"
 											title="delete this picture"
-											onclick="rmImage({{ $dt->idimage }})">
+											onclick="opQuestionDesign({{ $dt->idimage }})">
 											<span class="fa fa-lg fa-times"></span>
 										</button>
 										<div class="image image-all"

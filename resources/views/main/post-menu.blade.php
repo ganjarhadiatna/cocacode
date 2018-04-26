@@ -1,24 +1,24 @@
 <script type="text/javascript">
-	function viewPost(idstory, title='') {
-		var server_post = '{{ url("/box/") }}'+'/'+idstory+'/'+title;
+	function viewPost(idboxs, title='') {
+		var server_post = '{{ url("/box/") }}'+'/'+idboxs+'/'+title;
 		window.location = server_post;
 	}
-	function editPost(idstory) {
-		var server_post = '{{ url("/box/") }}'+'/'+idstory+'/edit';
+	function editPost(idboxs) {
+		var server_post = '{{ url("/box/") }}'+'/'+idboxs+'/edit';
 		window.location = server_post;
 	}
-	function organizedPost(idstory) {
-		var server_post = '{{ url("/box/") }}'+'/'+idstory+'/designs';
+	function organizedPost(idboxs) {
+		var server_post = '{{ url("/box/") }}'+'/'+idboxs+'/designs';
 		window.location = server_post;
 	}
-	function opQuestionPost(idstory) {
-		opQuestion('open','Are you sure you want to delete this design ?', 'deletePost("'+idstory+'")');
+	function opQuestionPost(idboxs) {
+		opQuestion('open','Are you sure you want to delete this box?', 'deletePost("'+idboxs+'")');
 	}
-	function deletePost(idstory) {
+	function deletePost(idboxs) {
 		$.ajax({
 			url: '{{ url("/box/delete") }}',
 			type: 'post',
-			data: {'idstory': idstory},
+			data: {'idboxs': idboxs},
 			beforeSend: function() {
 				opQuestion('hide');
 				open_progress('Deleting your design...');
@@ -26,15 +26,19 @@
 		})
 		.done(function(data) {
 			close_progress();
-			if (data === 'success') {
-				opAlert('open', 'This design has been deleted, to take effect try refresh this page.');
+			if (data == 'success') {
+				opAlert('open', 'This box has been deleted, to take effect try refresh this page.');
 			} else {
-				opAlert('open', 'Failed to delete this design.');
+				opAlert('open', 'Failed to delete this box.');
 			}
+			console.log(data);
 		})
-		.fail(function() {
-			close_progress();
+		.fail(function(data) {
 			opAlert('open', 'There is an error, please try again.');
+			console.log(data.responseJSON);
+		})
+		.always(function() {
+			close_progress();
 		});
 		
 	}
@@ -52,19 +56,19 @@
 			$('#'+path).hide();
 		}
 	}
-	function opPostPopup(stt, path, idstory, iduser, title = '') {
+	function opPostPopup(stt, path, idboxs, iduser, title = '') {
 		var id = '{{ Auth::id() }}';
 		if (stt === 'open') {
 			$('#'+path).show();
 			if (id === iduser) {
 				var menu = '\
-				<li onclick="organizedPost('+idstory+')">Organized Designs</li>\
-				<li onclick="viewPost('+idstory+')">View Boxs</li>\
-				<li onclick="editPost('+idstory+')">Edit Boxs</li>\
-				<li onclick="opQuestionPost('+idstory+')">Delete Boxs</li>\
+				<li onclick="organizedPost('+idboxs+')">Organized Designs</li>\
+				<li onclick="viewPost('+idboxs+')">View Boxs</li>\
+				<li onclick="editPost('+idboxs+')">Edit Boxs</li>\
+				<li onclick="opQuestionPost('+idboxs+')">Delete Boxs</li>\
 				';
 			} else {
-				var menu = '<li onclick="viewPost('+idstory+')">View Design<li>Report Design</li>';
+				var menu = '<li onclick="viewPost('+idboxs+')">View Design<li>Report Design</li>';
 			}
 			$('.content-popup .place-popup #val').html(menu);
 		} else {

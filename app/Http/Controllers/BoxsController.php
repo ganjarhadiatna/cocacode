@@ -16,8 +16,50 @@ class BoxsController extends Controller
 {
     function Boxs($id)
     {
-        $idimage = ImageModel::GetIdImage($id, 'asc');
-        if (is_int($idimage)) {
+        $check = BoxsModel::CheckBoxs($id);
+        if (is_int($check)) {
+            $idimage = ImageModel::GetIdImage($id, 'asc');
+            if (is_int($idimage)) {
+                BoxsModel::UpdateViewsBoxs($id);
+                $iduserMe = Auth::id();
+                $iduser = BoxsModel::GetIduser($id);
+                
+                $getStory = BoxsModel::GetBoxs($id);
+                $getImage = ImageModel::GetImage($idimage);
+                $getAllImage = ImageModel::GetAllImage($id);
+
+                $newStory = BoxsModel::PagRelatedBoxs(20, $id);
+
+                $tags = TagModel::GetTags($id);
+                $statusFolow = FollowModel::Check($iduser, $iduserMe);
+                $check = BookmarkModel::Check($idimage, $iduserMe);
+                return view('boxs.index', [
+                    'title' => 'Box',
+                    'path' => 'none',
+                    'getStory' => $getStory,
+                    'getImage' => $getImage,
+                    'getAllImage' => $getAllImage,
+                    'newStory' => $newStory,
+                    'tags' => $tags,
+                    'check' => $check,
+                    'statusFolow' => $statusFolow,
+                    'idboxs' => $id,
+                    'idimage' => $idimage
+                ]);
+            } else {
+                return redirect('/box/'.$id.'/designs');
+            }
+        } else {
+            return view('boxs.empty', [
+                'title' => 'Box Not Finded',
+                'path' => 'none',
+            ]);
+        }
+    }
+    function boxsImage($id, $idimage)
+    {
+        $check = BoxsModel::CheckBoxs($id);
+        if (is_int($check)) {
             BoxsModel::UpdateViewsBoxs($id);
             $iduserMe = Auth::id();
             $iduser = BoxsModel::GetIduser($id);
@@ -25,9 +67,9 @@ class BoxsController extends Controller
             $getStory = BoxsModel::GetBoxs($id);
             $getImage = ImageModel::GetImage($idimage);
             $getAllImage = ImageModel::GetAllImage($id);
-
+            
             $newStory = BoxsModel::PagRelatedBoxs(20, $id);
-
+            
             $tags = TagModel::GetTags($id);
             $statusFolow = FollowModel::Check($iduser, $iduserMe);
             $check = BookmarkModel::Check($idimage, $iduserMe);
@@ -45,37 +87,11 @@ class BoxsController extends Controller
                 'idimage' => $idimage
             ]);
         } else {
-            return redirect('/box/'.$id.'/designs');
+            return view('boxs.empty', [
+                'title' => 'Box Not Finded',
+                'path' => 'none',
+            ]);
         }
-    }
-    function boxsImage($id, $idimage)
-    {
-        BoxsModel::UpdateViewsBoxs($id);
-        $iduserMe = Auth::id();
-        $iduser = BoxsModel::GetIduser($id);
-        
-        $getStory = BoxsModel::GetBoxs($id);
-        $getImage = ImageModel::GetImage($idimage);
-        $getAllImage = ImageModel::GetAllImage($id);
-        
-        $newStory = BoxsModel::PagRelatedBoxs(20, $id);
-        
-        $tags = TagModel::GetTags($id);
-        $statusFolow = FollowModel::Check($iduser, $iduserMe);
-        $check = BookmarkModel::Check($idimage, $iduserMe);
-        return view('boxs.index', [
-            'title' => 'Design',
-            'path' => 'none',
-            'getStory' => $getStory,
-            'getImage' => $getImage,
-            'getAllImage' => $getAllImage,
-            'newStory' => $newStory,
-            'tags' => $tags,
-            'check' => $check,
-            'statusFolow' => $statusFolow,
-            'idboxs' => $id,
-            'idimage' => $idimage
-        ]);
     }
     function boxsEdit($idboxs)
     {
@@ -175,14 +191,14 @@ class BoxsController extends Controller
         $idboxs = $request['idboxs'];
 
         //deleting cover
-
-        //deleting like
-
-        //deleting comment
+        $cover = ImageModel::GetAllImage($idboxs);
+        foreach ($cover as $dt) {
+            unlink(public_path('story/covers/'.$dt->image));
+			unlink(public_path('story/thumbnails/'.$dt->image));
+        }
 
         //deleting story
         $rest = BoxsModel::DeleteBoxs($idboxs, $iduser);
-
         if ($rest) {
             echo "success";
         } else {
