@@ -249,24 +249,30 @@
     .frame-post {
       width: calc(100% - 15px);
       margin: 0 0 15px 0; } }
-  .frame-post .grid {
+  .frame-post .grid.grid-3x {
     display: grid;
     display: -ms-grid;
     grid-template-columns: 45px 1fr 45px;
     -ms-grid-columns: 45px 1fr 45px; }
-    .frame-post .grid .grid-1 {
-      position: relative;
-      grid-column: 1;
-      -ms-grid-column: 1; }
-    .frame-post .grid .grid-2 {
-      position: relative;
-      grid-column: 2;
-      -ms-grid-column: 2; }
-    .frame-post .grid .grid-3 {
-      position: relative;
-      text-align: right;
-      grid-column: 3;
-      -ms-grid-column: 3; }
+  .frame-post .grid.grid-2x {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 1fr 45px;
+    -ms-grid-columns: 1fr 45px; }
+  .frame-post .grid .grid-1 {
+    position: relative;
+    grid-column: 1;
+    -ms-grid-column: 1; }
+  .frame-post .grid .grid-2 {
+    position: relative;
+    grid-column: 2;
+    -ms-grid-column: 2; }
+  .frame-post .grid .grid-3 {
+    position: relative;
+    grid-column: 3;
+    -ms-grid-column: 3; }
+  .frame-post .grid .right {
+    text-align: right; }
   .frame-post .mid .top-tool {
     position: relative; }
     .frame-post .mid .top-tool .main-ttl {

@@ -1,4 +1,8 @@
 <script type="text/javascript">
+	function viewDesign(idboxs, idimage) {
+		var server_post = '{{ url("/box/") }}'+'/'+idboxs+'/design/'+idimage;
+		window.location = server_post;
+	}
 	function viewPost(idboxs, title='') {
 		var server_post = '{{ url("/box/") }}'+'/'+idboxs+'/'+title;
 		window.location = server_post;
@@ -66,6 +70,24 @@
 				<li onclick="viewPost('+idboxs+')">View Boxs</li>\
 				<li onclick="editPost('+idboxs+')">Edit Boxs</li>\
 				<li onclick="opQuestionPost('+idboxs+')">Delete Boxs</li>\
+				';
+			} else {
+				var menu = '<li onclick="viewPost('+idboxs+')">View Design<li>Report Design</li>';
+			}
+			$('.content-popup .place-popup #val').html(menu);
+		} else {
+			$('#'+path).hide();
+		}
+	}
+	function opPostSmallPopup(stt, path, idboxs, iduser, idimage) {
+		var id = '{{ Auth::id() }}';
+		if (stt === 'open') {
+			$('#'+path).show();
+			if (id === iduser) {
+				var menu = '\
+				<li onclick="viewDesign('+idboxs+','+idimage+')">View Design</li>\
+				<li onclick="addBookmark('+idimage+')">Save Design</li>\
+				<li onclick="pictZoom('+idimage+')">Zoomed</li>\
 				';
 			} else {
 				var menu = '<li onclick="viewPost('+idboxs+')">View Design<li>Report Design</li>';

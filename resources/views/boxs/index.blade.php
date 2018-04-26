@@ -211,7 +211,7 @@
 							<div class="st-mid" id="ctnTag">
 								@if (count($getAllImage) != 0)
 									@foreach ($getAllImage as $img)
-										<a href="{{ url('/box/'.$img->idboxs.'/picture/'.$img->idimage) }}">
+										<a href="{{ url('/box/'.$img->idboxs.'/design/'.$img->idimage) }}">
 											<div class="image image-100px image-radius"
 												style="background-image: url({{ asset('/story/thumbnails/'.$img->image) }})"></div>
 										</a>

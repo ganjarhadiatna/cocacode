@@ -18,7 +18,12 @@
 		margin: 0 0 15px 0;
 	}
 	.grid {
-		@include grid_3x(45px, 1fr, 45px);
+		&.grid-3x {
+			@include grid_3x(45px, 1fr, 45px);
+		}
+		&.grid-2x {
+			@include grid_2x(1fr, 45px);
+		}
 		.grid-1 {
 			position: relative;
 			@include column_1();
@@ -29,8 +34,10 @@
 		}
 		.grid-3 {
 			position: relative;
-			text-align: right;
 			@include column_3();
+		}
+		.right {
+			text-align: right;
 		}
 	}
 	.mid {

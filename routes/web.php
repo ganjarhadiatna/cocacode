@@ -36,7 +36,7 @@ Route::get('/get/comment/{idstory}/{offset}/{limit}', 'CommentController@get')->
 
 /*boxs*/
 Route::get('/box/{idboxs}', 'BoxsController@boxs')->where(['idboxs' => '[0-9]+']);
-Route::get('/box/{idboxs}/picture/{idimage}', 'BoxsController@boxsImage')
+Route::get('/box/{idboxs}/design/{idimage}', 'BoxsController@boxsImage')
 ->where(['idboxs' => '[0-9]+','idimage' => '[0-9]+']);
 
 Auth::routes();
