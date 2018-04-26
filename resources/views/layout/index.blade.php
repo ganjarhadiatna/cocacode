@@ -107,6 +107,36 @@
 			}
 		}
 
+		function addBookmark(idimage) {
+			if (iduser === '') {
+				opAlert('open', 'Please login berfore you can save this design.');
+			} else {
+				$.ajax({
+					url: '{{ url("/add/bookmark") }}',
+					type: 'post',
+					data: {'idimage': idimage},
+				})
+				.done(function(data) {
+					if (data === 'bookmark') {
+						$('.bookmark-'+idimage).attr('class', 'bookmark-'+idimage+' fas fa-lg fa-bookmark');
+					} else if (data === 'unbookmark') {
+						$('.bookmark-'+idimage).attr('class', 'bookmark-'+idimage+' far fa-lg fa-bookmark');
+					} else if (data === 'failedadd') {
+						$('.bookmark-'+idimage).attr('class', 'bookmark-'+idimage+' far fa-lg fa-bookmark');
+					} else if (data === 'failedremove') {
+						$('.bookmark-'+idimage).attr('class', 'bookmark-'+idimage+' fas fa-lg fa-bookmark');
+					} else {
+						opAlert('open', 'There is an error, please try again.');
+					}
+					//console.log(data);
+				})
+				.fail(function(data) {
+					//console.log(data.responseJSON);
+					opAlert('open', 'There is an error, please try again.');
+				});
+			}
+		}
+
 		window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
@@ -213,12 +243,13 @@
 								</button>
 							</a>
 						@endforeach
-						<button class="create btn btn-circle btn-main-color" id="op-add" key="hide">
-							<span class="fas fa-lg fa-plus"></span>
-						</button>
+						<a href="{{ url('/compose') }}">
+							<button class="create btn btn-circle btn-main-color" key="hide">
+								<span class="fas fa-lg fa-plus"></span>
+							</button>
+						</a>
 					@endif
 				</div>
-				@include('main.add-menu')
 				@include('main.category')
 				@include('main.notifications')
 			</div>
@@ -272,6 +303,5 @@
 	@include('main.post-menu')
 	@include('main.question-menu')
 	@include('main.alert-menu')
-	@include('main.save')
 </body>
 </html>

@@ -14,4 +14,38 @@ class ImageModel extends Model
         return DB::table('image')
         ->insert($data);
     }
+    function scopeGetImage($query, $idimage)
+    {
+        return DB::table('image')
+        ->where('idimage', $idimage)
+        ->value('image');
+    }
+    function scopeGetAllImage($query, $idboxs)
+    {
+        return DB::table('image')
+        ->select(
+            'idimage',
+            'image',
+            'id',
+            'idboxs')
+        ->where('idboxs', $idboxs)
+        ->get();
+    }
+    function scopeGetId($query, $id, $idboxs)
+    {
+        return DB::table('image')
+        ->where('id',$id)
+        ->where('idboxs',$idboxs)
+        ->limit(1)
+        ->orderBy('idimage','desc')
+        ->value('idimage');
+    }
+    function scopeGetIdImage($query, $idboxs, $stt)
+    {
+        return DB::table('image')
+        ->where('idboxs',$idboxs)
+        ->orderBy('idimage',$stt)
+        ->limit(1)
+        ->value('idimage');
+    }
 }

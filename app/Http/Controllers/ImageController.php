@@ -13,64 +13,57 @@ class ImageController extends Controller
 {
     function upload(Request $request)
     {
-    	$this->validate($request, [
-    		'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:100000',
-    	]);
     	$id = Auth::id();
-    	$image = $request->file('image');
-    	$chrc = array('[',']','@',' ','+','-','#','*','<','>','_','(',')',';',',','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
-	    $filename = $id.time().str_replace($chrc, '', $image->getClientOriginalName());
+		$image = $request->file('image');
+		$idboxs = $request['idboxs'];
 
-	    //saving to database
-	    $data = ['image' => $filename, 'id' => $id];
-	    ImageModel::AddImage($data);
+		if (csrf_token()) {
+			if ($image) {
+				//validate
+				$this->validate($request, [
+					'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1000000',
+				]);
 
-	    //saving image to server
-	    $destination = public_path('story/images/');
-	    $image->move($destination, $filename);
+				//rename file
+				$chrc = array('[',']','@',' ','+','-','#','*','<','>','_','(',')',';',',','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
+				$filename = $id.time().str_replace($chrc, '', $image->getClientOriginalName());
 
-	    echo $filename;
+				$data = array(
+					'image' => $filename,
+					'id' => $id,
+					'idboxs' => $idboxs
+				);
+				$rest = ImageModel::AddImage($data);
+				if ($rest) {
+					//save image to server
+					//creating thumbnail and save to server
+					$destination = public_path('story/thumbnails/'.$filename);
+					$img = Image::make($image->getRealPath());
+					$img->resize(400, 400, function ($constraint) {
+						$constraint->aspectRatio();
+					})->save($destination);
+
+					//saving image real to server
+					$destination = public_path('story/covers/');
+					$image->move($destination, $filename);
+
+					//getting last idimage
+					$idimage = ImageModel::GetId($id, $idboxs);
+					$final = array(
+						'filename' => $filename,
+						'id' => $id,
+						'idboxs' => $idboxs,
+						'idimage' => $idimage
+					);
+					echo json_encode($final);
+				} else {
+					echo "failed-saving";
+				}
+			} else {
+				echo "no-file";
+			}
+		} else {
+			echo "no-token";
+		}
 	}
-	function publish(Request $request)
-    {
-    	$id = Auth::id();
-    	$cover = $request['cover'];
-    	$content = $request['content'];
-    	$adult = 0;
-    	$commenting = 0;
-
-    	//setting cover
-    	$this->validate($request, [
-    		'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
-    	]);
-    	$image = $request->file('cover');
-    	$chrc = array('[',']','@',' ','+','-','#','*','<','>','_','(',')',';',',','&','%','$','!','`','~','=','{','}','/',':','?','"',"'",'^');
-	    $filename = $id.time().str_replace($chrc, '', $image->getClientOriginalName());
-
-	    //create thumbnail
-	    $destination = public_path('story/thumbnails/'.$filename);
-	    $img = Image::make($image->getRealPath());
-	    $img->resize(400, 400, function ($constraint) {
-	    	$constraint->aspectRatio();
-	    })->save($destination);
-
-	    //create image real
-	    $destination = public_path('story/covers/');
-	    $image->move($destination, $filename);
-
-    	$data = array(
-    		'description' => $content,
-    		'cover' => $filename,
-    		'id' => $id
-    	);
-
-    	$rest = StoryModel::AddStory($data);
-    	if ($rest) {
-    		$dt = StoryModel::GetID();
-            $this->mentions($request['tags'], $dt);
-    		echo $dt;
-    	} else {
-    		echo "failed";
-    	}
-    }
 }

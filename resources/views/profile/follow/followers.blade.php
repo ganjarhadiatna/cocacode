@@ -2,13 +2,13 @@
 @section('title',$title)
 @section('path', $path)
 @section('content')
-<div class="sc-header bdr-bottom-mobile">
-	<div class="sc-place pos-fix">
-		<div class="col-full">
-			<div class="sc-grid sc-grid-1x">
-				<div class="sc-col-2">
-					<h2 class="ttl-head ttl-sekunder-color">{{ $ttl_followers }} Followers</h2>
-				</div>
+<div class="sc-header padding-20px">
+	<div class="sc-place">
+		<div class="sc-block">
+			<div class="sc-col-1">
+				<h1 class="ttl-head ctn-main-font ctn-big">
+				{{ $ttl_followers }} Followers
+				</h1>
 			</div>
 		</div>
 	</div>

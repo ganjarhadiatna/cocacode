@@ -7,27 +7,27 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Image;
 
-use App\StoryModel;
+use App\BoxsModel;
 use App\ProfileModel;
 use App\FollowModel;
 use App\TagModel;
 
 class ProfileController extends Controller
 {
-	function profile()
-    {
-        $id = Auth::id();
+    function profile()
+	{
+		$id = Auth::id();
         $profile = ProfileModel::UserData($id);
-        $userStory = StoryModel::PagUserStory(20, $id);
-        return view('profile.index', [
+        $userStory = BoxsModel::PagUserBoxs(20, $id);
+        return view('profile.boxs', [
             'title' => 'User Profile',
             'path' => 'profile',
-            'nav' => 'story',
+            'nav' => 'design',
             'profile' => $profile,
             'userStory' => $userStory
         ]);
-    }
-	function story($id)
+	}
+    function designs($id)
 	{
 		$iduser = Auth::id();
 		if ($iduser == $id) {
@@ -36,18 +36,18 @@ class ProfileController extends Controller
 			$pathProfile = 'none';
 		}
         $profile = ProfileModel::UserData($id);
-        $userStory = StoryModel::PagUserStory(20, $id);
+        $userStory = BoxsModel::PagUserBoxs(20, $id);
         $statusFolow = FollowModel::Check($id, $iduser);
-        return view('profile.index', [
+        return view('profile.designs', [
             'title' => 'User Profile',
             'path' => $pathProfile,
-            'nav' => 'story',
+            'nav' => 'design',
             'profile' => $profile,
             'userStory' => $userStory,
             'statusFolow' => $statusFolow
         ]);
 	}
-	function bookmark($id)
+	function boxs($id)
 	{
 		$iduser = Auth::id();
 		if ($iduser == $id) {
@@ -56,36 +56,42 @@ class ProfileController extends Controller
 			$pathProfile = 'none';
 		}
         $profile = ProfileModel::UserData($id);
-        $userStory = StoryModel::PagUserBookmark(20, $id);
+        $userBoxs = BoxsModel::DetailBoxs(20, $id);
         $statusFolow = FollowModel::Check($id, $iduser);
-        return view('profile.index', [
+        return view('profile.boxs', [
             'title' => 'User Profile',
             'path' => $pathProfile,
-            'nav' => 'bookmark',
+            'nav' => 'boxs',
+            'profile' => $profile,
+            'userBoxs' => $userBoxs,
+            'statusFolow' => $statusFolow
+        ]);
+	}
+	function saved($id)
+	{
+		$iduser = Auth::id();
+		if ($iduser == $id) {
+			$pathProfile = 'profile';
+		} else {
+			$pathProfile = 'none';
+		}
+        $profile = ProfileModel::UserData($id);
+        $userStory = BoxsModel::PagUserBookmark(20, $id);
+        $statusFolow = FollowModel::Check($id, $iduser);
+        return view('profile.saved', [
+            'title' => 'User Profile',
+            'path' => $pathProfile,
+            'nav' => 'saved',
             'profile' => $profile,
             'userStory' => $userStory,
             'statusFolow' => $statusFolow
         ]);
 	}
-
-    function profileNotif()
-    {
-        $id = Auth::id();
-        $profile = ProfileModel::UserData($id);
-        $topUsers = ProfileModel::TopUsers($id, 8);
-        $topTags = TagModel::TopSmallTags();
-        return view('profile.notifications', [
-            'title' => 'Profile Notifications',
-            'path' => 'notif',
-            'topUsers' => $topUsers,
-            'topTags' => $topTags
-        ]);
-    }
 	function profileSetting()
     {
         $id = Auth::id();
         $profile = ProfileModel::UserData($id);
-        return view('profile.setting', [
+        return view('profile.setting.setting', [
             'title' => 'Profile Setting',
             'path' => 'profile',
             'profile' => $profile
@@ -95,7 +101,7 @@ class ProfileController extends Controller
     {
         $id = Auth::id();
         $profile = ProfileModel::UserData($id);
-        return view('profile.edit', [
+        return view('profile.setting.edit', [
             'title' => 'Edit Profile',
             'path' => 'profile',
             'profile' => $profile
@@ -105,7 +111,7 @@ class ProfileController extends Controller
     {
         $id = Auth::id();
         $profile = ProfileModel::UserData($id);
-        return view('profile.password', [
+        return view('profile.setting.password', [
             'title' => 'Change Password',
             'path' => 'profile',
             'profile' => $profile

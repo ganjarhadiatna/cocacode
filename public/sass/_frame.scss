@@ -241,14 +241,15 @@
 	width: 100%;
 	padding: 100px 0;
 	text-align: center;
+	color: $txt-sek-color;
 	.icn {
 		width: 120px;
 		height: 120px;
 		line-height: 120px;
 		font-size: 48pt;
 		border-radius: 100%;
-		background-color: $pos-color;
-		color: $sek-color;
+		background-color: $sek-color;
+		color: $txt-sek-color;
 	}
 	.ttl {
 		font-size: $txt-size-big;
@@ -922,4 +923,38 @@
 .frame-more .btn {
 	width: 150px;
 	padding: 0 0;
+}
+
+$width-review: calc((700px / 4) - 16px);
+.frame-review {
+	position: relative;
+	width: $width-review;
+	height: $width-review;
+	text-align: center;
+	background-color: #f0f0f0;
+	margin: 5px;
+	border-radius: 10px;
+	overflow: hidden;
+	border: 2.5px rgba(0,0,0,0.1) dashed;
+	&:hover {
+		.del {
+			display: block;
+		}
+	}
+	.del {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		font-size: 12px;
+		z-index: 1;
+		display: none;
+	}
+	.load {
+		@include post_center();
+		color: $txt-sek-color;
+		font-size: $txt-size-desc;
+	}
 }

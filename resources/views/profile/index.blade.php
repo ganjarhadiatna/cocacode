@@ -1,10 +1,6 @@
-@extends('layout.index')
-@section('title',$title)
-@section('path', $path)
-@section('content')
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#post-nav ol li').each(function(index, el) {
+		$('#post-nav ul li').each(function(index, el) {
 			$(this).removeClass('active');
 			$('#{{ $nav }}').addClass('active');
 		});
@@ -84,12 +80,6 @@
 					<div class="other mrg-bottom">
 						<ul>
 							<li>
-								<a href="{{ url('/user/'.$p->id.'/story') }}">
-									<div class="val">{{ $p->ttl_story }}</div>
-									<div class="ttl">Stories</div>
-								</a>
-							</li>
-							<li>
 								<a href="{{ url('/user/'.$p->id.'/following') }}">
 									<div class="val">{{ $p->ttl_following }}</div>
 									<div class="ttl">Following</div>
@@ -108,17 +98,19 @@
 		</div>
 	</div>
 </div>
-@endforeach
-<div class="block pp-bot">
-	@if (count($userStory) == 0)
-		@include('main.post-empty')	
-	@else
-		<div class="post">
-			@foreach ($userStory as $story)
-				@include('main.post')
-			@endforeach
-		</div>
-		{{ $userStory->links() }}
-	@endif
+<div class="padding-bottom-20px">
+	<div class="navigator nav-3x nav-theme-3 col-400px" id="post-nav">
+		<ul>
+			<a href="{{ url('/user/'.$p->id.'/boxs') }}">
+				<li id="boxs">Boxs</li>
+			</a>
+			<a href="{{ url('/user/'.$p->id.'/designs') }}">
+				<li id="design">Designs</li>
+			</a>
+			<a href="{{ url('/user/'.$p->id.'/saved') }}">
+				<li id="saved">Saved</li>
+			</a>
+		</ul>
+	</div>
 </div>
-@endsection
+@endforeach

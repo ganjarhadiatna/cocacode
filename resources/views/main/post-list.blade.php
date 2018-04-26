@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<div class="mid-tool">
-			<a href="{{ url('/design/'.$story->idstory) }}">
+			<a href="{{ url('/design/'.$story->idstory.'/image/'.$story->idimage) }}">
 				<div class="cover"></div>
 				<img src="{{ asset('/story/thumbnails/'.$story->cover) }}" alt="pict" id="pict-{{ $story->idstory }}" key="{{ $story->idstory }}">
 			</a>

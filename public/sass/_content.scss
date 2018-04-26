@@ -110,7 +110,7 @@
 
 		font-size: 14px;
 		font-weight: 600;
-		color: $txt-min-color;
+		color: $txt-sek-color;
 	}
 	.place-collect {
 		margin-bottom: 15px;
@@ -222,10 +222,9 @@
 			width: calc(100% - 30px);
 			padding: 15px;
 			list-style: none;
-			color: $txt-min-color;
+			color: $txt-sek-color;
 			cursor: pointer;
 			&:hover {
-				background-color: #f0f0f0;
 				color: $min-color;
 			}
 			&.bdr-bottom {
@@ -636,4 +635,12 @@
 			}
 		}
 	}
+}
+
+.place-review-image {
+	position: relative;
+	width: 100%;
+	padding: 0 0;
+	display: flex;
+	flex-wrap: wrap;
 }

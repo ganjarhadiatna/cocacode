@@ -14,7 +14,7 @@
 		height: 45px;
 		line-height: 45px;
 		text-align: center;
-		color: $sek-color;
+		color: $txt-sek-color;
 		border-radius: 100%;
 	}
 	li.active {
@@ -26,7 +26,7 @@
 		height: 45px;
 		line-height: 45px;
 		text-align: center;
-		background-color: $pos-color;
+		background-color: $min-color;
 		color: $sek-color;
 		border-radius: 100%;
 	}
@@ -209,4 +209,102 @@
 			line-height: 100px;
 		}
 	}
+}
+
+/*navigator*/
+.navigator {
+	position: relative;
+	margin: auto;
+    overflow: auto;
+    ul {
+        li {
+            list-style: none;
+            float: left;
+            text-align: center;
+            line-height: 45px;
+            font-weight: 600;
+            font-size: $txt-size-desc;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    &.nav-2x {
+        ul {
+            li {
+                width: 50%;
+            }
+        }
+    }
+    &.nav-3x {
+        ul {
+            li {
+                width: 33.33%;
+            }
+        }
+    }
+    &.nav-4x {
+        ul {
+            li {
+                width: 25%;
+            }
+        }
+    }
+    &.nav-5x {
+        ul {
+            li {
+                width: 20%;
+            }
+        }
+    }
+}
+
+.nav-theme-1 {
+	box-shadow: 0 0 0 2px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    ul {
+        li {
+            background-color: rgba(225,225,225,0.54);
+            color: $txt-sek-color;
+            &:hover {
+                color: $txt-min-color;
+            }
+            &.active {
+                background-color: #fff;
+	            color: $txt-min-color;
+            }
+        }
+    }
+}
+.nav-theme-2 {
+    background-color: #fff;
+    ul {
+        li {
+            color: $txt-sek-color;
+            &:hover {
+                color: $txt-min-color;
+            }
+            &.active {
+                background-color: #fff;
+                color: $txt-min-color;
+                border-bottom: 2px $txt-min-color solid;
+            }
+        }
+    }
+}
+.nav-theme-3 {
+    background-color: #fff;
+    ul {
+        li {
+            color: $txt-sek-color;
+            border-radius: 35px;
+            &:hover {
+                color: $txt-min-color;
+            }
+            &.active {
+                background-color: rgba(225,225,225,0.54);
+	            color: $txt-sek-color;
+            }
+        }
+    }
 }

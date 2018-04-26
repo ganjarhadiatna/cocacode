@@ -6,7 +6,7 @@
 	<div class="block bdr-bottom">
 		<div class="logo" style="background-image: url('{{ asset('/img/CocaCode/3.png') }}')"></div>
 		<div class="ttl ctn-main-font ctn-small ctn-center padding-10px">
-			Share What You Can Do.
+			It's a place for Designers show and sale their work.
 		</div>
 	</div>
 	<div class="banner bdr-bottom">
@@ -37,7 +37,7 @@
 				<div class="icn fa fa-lg fa-pencil-alt"></div>
 			</div>
 			<div class="mid">
-				Create and Share a Story.
+				Create and Share a Designs.
 			</div>
 		</div>
 		<div class="frame-info">
@@ -45,7 +45,7 @@
 				<div class="icn fas fa-lg fa-box-open"></div>
 			</div>
 			<div class="mid">
-				Save Much Stories on a Box.
+				Save Much Designs on a Boxs.
 			</div>
 		</div>
 		<div class="frame-info">

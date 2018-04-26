@@ -14,18 +14,18 @@ class TagModel extends Model
         return DB::table('tags')
         ->insert($data);
     }
-    function scopeGetTags($query, $idstory)
+    function scopeGetTags($query, $idboxs)
     {
         return DB::table('tags')
         ->select('idtags', 'tag')
-        ->where('tags.idstory', $idstory)
+        ->where('tags.idboxs', $idboxs)
         ->orderBy('tags.idtags', 'asc')
         ->get();
     }
-    function scopeDeleteTags($query, $idstory)
+    function scopeDeleteTags($query, $idboxs)
     {
         return DB::table('tags')
-        ->where('tags.idstory', $idstory)
+        ->where('tags.idboxs', $idboxs)
         ->delete();
     }
     function scopeTopTags($query, $limit)

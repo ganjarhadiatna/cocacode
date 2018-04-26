@@ -5,11 +5,52 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\BookmarkModel;
-use App\StoryModel;
+use App\BoxsModel;
 use App\NotifModel;
 
 class BookmarkController extends Controller
 {
+	function add(Request $request)
+    {
+    	$id = Auth::id();
+    	$idimage = $request['idimage'];
+    	$ch = BookmarkModel::Check($idimage, $id);
+    	if (is_int($ch)) {
+    		$rest = BookmarkModel::Remove($idimage, $id);
+		    if ($rest) {
+		    	echo "unbookmark";	
+		    } else {
+		    	echo "failedremove";
+		    }
+    	} else {
+    		$data = array(
+				'idimage' => $idimage,
+				'id' => $id
+			);
+	    	$rest = BookmarkModel::Add($data);
+	    	if ($rest) {
+	    		/*//get user id
+	    		$iduser = BoxsModel::GetIduser($idimage);
+	    		if ($id != $iduser) {
+	    			//get bookmark id
+		    		$idbookmark = BookmarkModel::GetIduser($iduser);
+		    		//add notif bookmark
+		    		$notif = array(
+		    			'idimage' => $idimage,
+		    			'idbookmark' => $idbookmark,
+		    			'id' => $id,
+		    			'iduser' => $iduser,
+		    			'title' => 'Saved your Story',
+		    			'type' => 'bookmark'
+		    		);
+		    		NotifModel::AddNotifS($notif);
+	    		}*/
+	    		echo "bookmark";	
+	    	} else {
+	    		echo "failedadd";
+	    	}
+    	}
+    }
 	function save(Request $req)
     {
 		$id = Auth::id();
@@ -24,7 +65,7 @@ class BookmarkController extends Controller
 	    if ($rest) {
 			//get user id
 			$ch = BookmarkModel::Check($idstory, $id);
-	    	$iduser = StoryModel::GetIduser($idstory);
+	    	$iduser = BoxsModel::GetIduser($idstory);
 	    	if ($id != $iduser) {
 		   		//add notif bookmark
 		   		$notif = array(

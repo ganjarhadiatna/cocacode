@@ -4,13 +4,7 @@
 @section('content')
 <script type="text/javascript">
     var server = '{{ url("/") }}';
-	function opDialog(stt, path='') {
-		if (stt === 'open') {
-			$('#'+path).fadeIn();
-		} else {
-			$('.compose .create-dialog').fadeOut();
-		}
-	}
+	var idboxs = '{{ $idboxs }}';
 	function removeCover() {
 		$("#image-preview").attr('src','');
 		$('.compose .main .create-body .create-block .cover-icon .img').hide();
@@ -25,50 +19,34 @@
 		$('.compose .main .create-body .create-block .cover-icon .img').show();
 		$('.compose .main .create-body .create-block .cover-icon .icn').hide();
 	}
-	function putToText(html) {
-		document.getElementById('write-story').focus();
-	    var sel, range;
-	    if (window.getSelection) {
-	        // IE9 and non-IE
-	        sel = window.getSelection();
-	        if (sel.getRangeAt && sel.rangeCount) {
-	            range = sel.getRangeAt(0);
-	            range.deleteContents();
-
-	            // Range.createContextualFragment() would be useful here but is
-	            // non-standard and not supported in all browsers (IE9, for one)
-	            var el = document.createElement("div");
-	            el.innerHTML = html;
-	            var frag = document.createDocumentFragment(), node, lastNode;
-	            while ( (node = el.firstChild) ) {
-	                lastNode = frag.appendChild(node);
-	            }
-	            range.insertNode(frag);
-	            
-	            // Preserve the selection
-	            if (lastNode) {
-	                range = range.cloneRange();
-	                range.setStartAfter(lastNode);
-	                range.collapse(true);
-	                sel.removeAllRanges();
-	                sel.addRange(range);
-	            }
-	        }
-	    } else if (document.selection && document.selection.type != "Control") {
-	        // IE < 9
-	        document.selection.createRange().pasteHTML(html);
-	    }
+	function rvDone() {
+		window.location = server+'/box/'+idboxs;
+	}
+	function rvImage(url, idimage) {
+		var review = '\
+		<div class="frame-review">\
+			<button class="del btn btn-circle btn-black-color btn-focus"\
+				title="delete this picture"\
+				onclick="rmImage('+idimage+')">\
+				<span class="fa fa-lg fa-times"></span>\
+			</button>\
+			<div class="image image-all" style="background-image: url('+url+')"></div>\
+		</div>';
+		return review;
 	}
 	function getImage() {
 		var fd = new FormData();
 		var image = $('#get-image')[0].files[0];
+		var dt = '';
 		
 		fd.append('image', image);
+		fd.append('idboxs', idboxs);
 		$.each($('#form-image').serializeArray(), function(a, b) {
 	    	fd.append(b.name, b.value);
 	    });
+
 	    $.ajax({
-	    	url: '{{ url("/story/image/upload") }}',
+	    	url: '{{ url("/box/image/upload") }}',
 			data: fd,
 			processData: false,
 			contentType: false,
@@ -78,91 +56,31 @@
 			}
 	    })
 	    .done(function(data) {
-	    	var dt = '<img src="'+server+'/story/images/'+data+'" alt="image">';
-	    	$('#progressbar').hide();
-	    	$('#get-image').val('');
-	    	putToText(dt);
-	    })
-	    .fail(function() {
-	    	opAlert('open', 'We can not upload your Picture, please try again.');
-	    	$('#progressbar').hide();
-	    });
-	}
-	function getImageUrl() {
-		var url = $('#image-url').val();
-		if (url === '') {
-			$('#image-url').focus();
-		} else {
-			var dt = '<img src="'+url+'" alt="image">';
-			putToText(dt);
-			opDialog('hide');
-			$('#image-url').val('');
-		}
-	}
-	function getLinkUrl() {
-		var url = $('#link-url').val();
-		if (url === '') {
-			$('#link-url').focus();
-		} else {
-			var dt = '<a href="'+url+'" class="link">'+url+'</a>';
-			putToText(dt);
-			opDialog('hide');
-			$('#link-url').val('');
-		}
-	}
-	function getEmbed() {
-		var url = $('#embed-code').val();
-		if (url === '') {
-			$('#embed-code').focus();
-		} else {
-			putToText(url);
-			opDialog('hide');
-			$('#embed-code').val('');
-		}
-	}
-	function publish() {
-		var fd = new FormData();
-		var cover = $('#cover')[0].files[0];
-		var content = $('#write-story').val();
-		var tags = $('#tags-story').val();
-
-		fd.append('cover', cover);
-		fd.append('content', content);
-		fd.append('tags', tags);
-		$.each($('#form-publish').serializeArray(), function(a, b) {
-		   	fd.append(b.name, b.value);
-		});
-
-		$.ajax({
-		  	url: '{{ url("/story/publish") }}',
-			data: fd,
-			processData: false,
-			contentType: false,
-			type: 'post',
-			beforeSend: function() {
-				open_progress('Uploading your Story...');
+			if (data == 'success') {
+				opAlert('open', 'Uploading file sucess.');
+			} else if (data == 'no-file') {
+				opAlert('open', 'Please choose your file.');
+			} else if (data == 'no-token') {
+				opAlert('open', 'Please login with your account.');
+			} else if (data == 'failed-saving') {
+				opAlert('open', 'Uploading failed, please try again later.');
+			} else {
+				dt = JSON.parse(data);
+				//add place review
+				var img = '{{ asset("/story/thumbnails/") }}'+'/'+dt.filename;
+				var idimage = dt.idimage;
+				$('#frame-empty').hide();
+				$('#place-review-image').append(rvImage(img, idimage));
 			}
-		})
-		.done(function(data) {
-		   	if (data === 'failed') {
-		   		opAlert('open', 'failed to publish story.');
-		   		close_progress();
-		   	} else {
-		   		$('#cover').val('');
-				$('#write-story').val('');
-				opCreateStory('close');
-				close_progress();
-				window.location = '{{ url("/design/") }}'+'/'+data;
-		   	}
-		   	//console.log(data);
-		})
-		.fail(function(data) {
-		  	opAlert('open', "there is an error, please try again.");
-		   	close_progress();
-		   	//console.log(data.responseJSON);
+			//console.log(data);
+	    })
+	    .fail(function(data) {
+	    	opAlert('open', 'We can not upload your Picture, please try again.');
+			//console.log(data.responseJSON);
+	    })
+		.always(function() {
+			$('#progressbar').hide();
 		});
-
-		return false;
 	}
     $(document).ready(function() {
 		$('#progressbar').progressbar({
@@ -170,17 +88,30 @@
 		});
     });
 </script>
-<form id="form-publish" method="post" action="javascript:void(0)" enctype="multipart/form-data" onsubmit="publish()">
+<div>
     <div class="sc-header">
         <div class="sc-place pos-fix">
             <div class="col-700px">
-                <div class="sc-grid sc-grid-3x">
-                    <div class="sc-col-1"></div>
-                    <div class="sc-col-2">
-                        <h3 class="ttl-head ttl-sekunder-color">Add Picture</h3>
-                    </div>
-                    <div class="sc-col-3 txt-right">
-                        <input type="submit" name="save" class="btn btn-main-color" value="Publish" id="btn-publish">
+                <div class="sc-grid sc-grid-2x">
+                    <div class="sc-col-1">
+						<span>
+							<form id="form-publish"
+								method="post"
+								action="javascript:void(0)"
+								enctype="multipart/form-data"
+								>
+								<input type="file" name="get-image" class="hide-input-file" id="get-image" onchange="getImage()">
+							</form>
+							<label for="get-image">
+								<span class="btn btn-div btn-sekunder-color btn-radius">
+									<span class="fa fa-lg fa-camera"></span>
+									<span>Browse Picture</span>
+								</span>
+							</label>
+						</span>
+					</div>
+                    <div class="sc-col-2 txt-right">
+                        <input type="button" name="save" class="btn btn-main-color" value="Done" id="btn-publish" onclick="rvDone()">
                     </div>
                 </div>
             </div>
@@ -193,28 +124,30 @@
 					<div class="create-block">
 						<!--progress bar-->
 						<div class="loading mrg-bottom" id="progressbar"></div>
-						<div class="mrg-bottom">
-							<input type="file" name="cover" id="cover" required="required" autofocus="autofocus" onchange="loadCover()">
-							<label for="cover">
-								<div class="cover-icon">
-									<div class="icn">
-										<span class="fa fa-lg fa-camera"></span>
-										<span class="ttl-head">Choose Picture</span>
-									</div>
-									<div class="img">
-										<div class="change-cover">
-											<span>To change Picture just click again.</span>
-										</div>
-										<img src="" alt="image" id="image-preview">
-									</div>
+						<div class="place-review-image" id="place-review-image">
+							@if (count($image) == 0)
+								<div class="frame-empty" id="frame-empty">
+									<div class="icn fa fa-lg fa-images btn-main-color"></div>
+									<div class="ttl padding-15px">There is no picture, try upload one.</div>
 								</div>
-							</label>
+							@else
+								@foreach ($image as $dt)
+									<div class="frame-review">
+										<button class="del btn btn-circle btn-black-color btn-focus"
+											title="delete this picture"
+											onclick="rmImage({{ $dt->idimage }})">
+											<span class="fa fa-lg fa-times"></span>
+										</button>
+										<div class="image image-all"
+											style="background-image: url({{ asset('/story/thumbnails/'.$dt->image) }})"></div>
+									</div>
+								@endforeach
+							@endif
 						</div>
 					</div>
                 </div>
-                <div class="padding-10px"></div>
             </div>
         </div>
     </div>
-</form>
+</div>
 @endsection

@@ -42,6 +42,10 @@ a {
 	}
 }
 
+.hide-input-file {
+	display: none;
+}
+
 .col-all {
 	@include col_all();
 }
@@ -65,6 +69,15 @@ a {
 }
 .col-600px {
 	@include col_set(600px);
+}
+.col-500px {
+	@include col_set(500px);
+}
+.col-400px {
+	@include col_set(400px);
+}
+.col-300px {
+	@include col_set(300px);
 }
 
 .ctn-main-font {

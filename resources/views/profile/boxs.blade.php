@@ -2,30 +2,9 @@
 @section('title',$title)
 @section('path', $path)
 @section('content')
-<script type="text/javascript">
-	$(document).ready(function() {
-
-	});
-</script>
-<div class="sc-header padding-10px">
-	<div class="sc-place">
-		<div class="sc-block">
-			<div class="sc-col-1">
-				<h1 class="ttl-head ctn-main-font ctn-big padding-bottom-15px">
-					My Boxs
-                </h1>
-                <a href="{{ url('/compose/box') }}">
-                    <button class="btn btn-sekunder-color btn-no-border">
-                        <span class="fas fa-lg fa-plus"></span>
-                        <span>Add Box</span>
-                    </button>
-                </a>
-			</div>
-		</div>
-	</div>
-</div>
+@include('profile.index')
 <div>
-    @if (count($box) == 0)
+    @if (count($userBoxs) == 0)
         <div class="frame-empty">
             <div class="icn fa fa-lg fa-thermometer-empty btn-main-color"></div>
             <div class="ttl padding-15px">Box empty, try to create one.</div>
@@ -38,11 +17,11 @@
         </div>
     @else
         <div class="post-flex">
-            @foreach ($box as $bx)
+            @foreach ($userBoxs as $bx)
                 @include('main.box')
             @endforeach
         </div>
-        {{ $box->links() }}
+        {{ $userBoxs->links() }}
     @endif
 </div>
 @endsection

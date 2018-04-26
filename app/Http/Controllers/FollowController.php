@@ -19,7 +19,7 @@ class FollowController extends Controller
         }
         $profile = FollowModel::GetUserFollowing($iduser, $id);
         $ttl_following = FollowModel::GetTotalFollowing($iduser);
-        return view('profile.following', [
+        return view('profile.follow.following', [
             'title' => 'Following',
             'path' => 'profile',
             'profile' => $profile,
@@ -36,7 +36,7 @@ class FollowController extends Controller
         $profile = FollowModel::GetUserFollowers($iduser, $id);
         $ttl_followers = FollowModel::GetTotalFollowers($iduser);
         return view(
-            'profile.followers', [
+            'profile.follow.followers', [
             'title' => 'Followers',
             'path' => 'profile',
             'profile' => $profile,

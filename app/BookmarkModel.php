@@ -19,16 +19,17 @@ class BookmarkModel extends Model
     {
     	return DB::table('bookmark')->insert($data);
     }
-    function scopeRemove($query, $idbookmark)
+    function scopeRemove($query, $idimage, $id)
     {
     	return DB::table('bookmark')
-    	->where('idbookmark', $idbookmark)
+    	->where('idimage', $idimage)
+    	->where('id', $id)
     	->delete();
     }
-    function scopeCheck($query, $idstory, $id)
+    function scopeCheck($query, $idimage, $id)
     {
     	return DB::table('bookmark')
-    	->where('idstory', $idstory)
+    	->where('idimage', $idimage)
     	->where('id', $id)
     	->value('idbookmark');
     }

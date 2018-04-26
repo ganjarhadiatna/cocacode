@@ -1,10 +1,14 @@
 <script type="text/javascript">
 	function viewPost(idstory, title='') {
-		var server_post = '{{ url("/design/") }}'+'/'+idstory+'/'+title;
+		var server_post = '{{ url("/box/") }}'+'/'+idstory+'/'+title;
 		window.location = server_post;
 	}
-	function editPost(idstory, iduser) {
-		var server_post = '{{ url("/design/") }}'+'/'+idstory+'/edit/'+iduser+'/{{ csrf_token() }}';
+	function editPost(idstory) {
+		var server_post = '{{ url("/box/") }}'+'/'+idstory+'/edit';
+		window.location = server_post;
+	}
+	function organizedPost(idstory) {
+		var server_post = '{{ url("/box/") }}'+'/'+idstory+'/designs';
 		window.location = server_post;
 	}
 	function opQuestionPost(idstory) {
@@ -12,7 +16,7 @@
 	}
 	function deletePost(idstory) {
 		$.ajax({
-			url: '{{ url("/story/delete") }}',
+			url: '{{ url("/box/delete") }}',
 			type: 'post',
 			data: {'idstory': idstory},
 			beforeSend: function() {
@@ -53,7 +57,12 @@
 		if (stt === 'open') {
 			$('#'+path).show();
 			if (id === iduser) {
-				var menu = '<li onclick="viewPost('+idstory+')">View Design</li><li onclick="editPost('+idstory+','+iduser+')">Edit Design</li><li onclick="opQuestionPost('+idstory+')">Delete Story</li>';
+				var menu = '\
+				<li onclick="organizedPost('+idstory+')">Organized Designs</li>\
+				<li onclick="viewPost('+idstory+')">View Boxs</li>\
+				<li onclick="editPost('+idstory+')">Edit Boxs</li>\
+				<li onclick="opQuestionPost('+idstory+')">Delete Boxs</li>\
+				';
 			} else {
 				var menu = '<li onclick="viewPost('+idstory+')">View Design<li>Report Design</li>';
 			}

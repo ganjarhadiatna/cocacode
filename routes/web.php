@@ -20,15 +20,13 @@ Route::get('/fresh', 'MainController@fresh');
 Route::get('/trending', 'MainController@trending');
 Route::get('/search/{ctr}', 'MainController@search');
 Route::get('/search', 'MainController@searchNormal');
-Route::get('/design/{id}', 'StoryController@story')->where(['id' => '[0-9]+']);
-Route::get('/design/{id}/{title}', 'StoryController@story')->where(['id' => '[0-9]+']);
 Route::get('/s/{id}', 'StoryController@story')->where(['id' => '[0-9]+']);
 
 /*user*/
-Route::get('/user/{iduser}', 'ProfileController@story')->where(['iduser' => '[0-9]+']);
-Route::get('/u/{iduser}', 'ProfileController@story')->where(['iduser' => '[0-9]+']);
-
-/*story*/
+Route::get('/user/{iduser}', 'ProfileController@boxs')->where(['iduser' => '[0-9]+']);
+Route::get('/user/{iduser}/designs', 'ProfileController@designs')->where(['iduser' => '[0-9]+']);
+Route::get('/user/{iduser}/boxs', 'ProfileController@boxs')->where(['iduser' => '[0-9]+']);
+Route::get('/user/{iduser}/saved', 'ProfileController@saved')->where(['iduser' => '[0-9]+']);
 
 /*loves*/
 Route::post('/loves/add', 'StoryController@addLoves');
@@ -37,44 +35,42 @@ Route::post('/loves/add', 'StoryController@addLoves');
 Route::get('/get/comment/{idstory}/{offset}/{limit}', 'CommentController@get')->where(['idstory' => '[0-9]+']);
 
 /*boxs*/
-Route::get('/box/{idbox}', 'BoxController@view')->where(['idbox' => '[0-9]+']);
+Route::get('/box/{idboxs}', 'BoxsController@boxs')->where(['idboxs' => '[0-9]+']);
+Route::get('/box/{idboxs}/picture/{idimage}', 'BoxsController@boxsImage')
+->where(['idboxs' => '[0-9]+','idimage' => '[0-9]+']);
 
 Auth::routes();
 Route::middleware('auth')->group(function() {
     /*user*/
     Route::get('/user/{iduser}/following', 'FollowController@following')->where(['iduser' => '[0-9]+']);
     Route::get('/user/{iduser}/followers', 'FollowController@followers')->where(['iduser' => '[0-9]+']);
-    Route::get('/user/{iduser}/story', 'ProfileController@story')->where(['iduser' => '[0-9]+']);
-    Route::get('/user/{iduser}/box', 'ProfileController@bookmark')->where(['iduser' => '[0-9]+']);
+    Route::get('/user/{iduser}/boxs', 'ProfileController@boxs')->where(['iduser' => '[0-9]+']);
 
 	/*profile*/
 	Route::get('/me', 'ProfileController@profile');
-    Route::get('/me/notifications', 'ProfileController@profileNotif');
     Route::get('/me/setting', 'ProfileController@profileSetting');
     Route::get('/me/setting/profile', 'ProfileController@profileSettingProfile');
     Route::get('/me/setting/password', 'ProfileController@profileSettingPassword');
+    
     Route::get('/timelines', 'MainController@timelines');
+    
     Route::post('/save/profile', 'ProfileController@saveProfile');
     Route::post('/save/password', 'ProfileController@savePassword');
 
     /*compose*/
-    Route::get('/compose/design', 'MainController@composeStory');
-    Route::get('/compose/design/{iddesign}/content/{token}', 'MainController@composeImage');
+    Route::get('/compose', 'MainController@composeBox');
     Route::get('/compose/box', 'MainController@composeBox');
-    Route::post('/story/image/upload', 'ImageController@upload');
-    Route::post('/story/publish', 'StoryController@publish');
-    Route::get('/design/{idstory}/edit/{iduser}/{token}', 'StoryController@storyEdit');
-    Route::post('/story/save/editting', 'StoryController@saveEditting');
-    Route::post('/story/delete', 'StoryController@deleteStory');
+    Route::get('/compose/box/{idbox}/designs', 'MainController@composeImage');
+    
+    Route::post('/box/image/upload', 'ImageController@upload');
+    Route::post('/box/image/delete', 'ImageController@delete');
+    Route::post('/box/publish', 'BoxsController@publish');
 
-    /*boxs*/
-    Route::get('/box', 'BoxController@index');
-    Route::post('/box/publish', 'BoxController@publish');
-    Route::post('/box/delete', 'BoxController@deleteBox');
-    Route::get('/box/{idboxs}/edit/{iduser}/{token}', 'BoxController@editBox');
-    Route::post('/box/save/editing', 'BoxController@saveEditing');
-    Route::post('/box/save/story', 'BookmarkController@save');
-    Route::post('/box/remove/story', 'BookmarkController@remove');
+    Route::get('/box/{idstory}/edit', 'BoxsController@boxsEdit');
+    Route::get('/box/{idstory}/designs', 'MainController@composeImage');
+
+    Route::post('/box/edit', 'BoxsController@editBoxs');
+    Route::post('/box/delete', 'BoxsController@deleteBoxs');
 
     /*Follow*/
     Route::post('/follow/add', 'FollowController@add');

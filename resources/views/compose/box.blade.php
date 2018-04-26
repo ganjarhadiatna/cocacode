@@ -3,13 +3,16 @@
 @section('path', $path)
 @section('content')
 <script type="text/javascript">
-    function createBox() {
+	var server = '{{ url("/") }}';
+	function publish() {
 		var fd = new FormData();
-		var title = $('#title-box').val();
-		var content = $('#write-box').val();
+		var title = $('#title-story').val();
+		var content = $('#write-story').val();
+		var tags = $('#tags-story').val();
 
 		fd.append('title', title);
 		fd.append('content', content);
+		fd.append('tags', tags);
 		$.each($('#form-publish').serializeArray(), function(a, b) {
 		   	fd.append(b.name, b.value);
 		});
@@ -21,18 +24,19 @@
 			contentType: false,
 			type: 'post',
 			beforeSend: function() {
-				open_progress('Creating your box...');
+				open_progress('Uploading your Story...');
 			}
 		})
 		.done(function(data) {
 		   	if (data == 0) {
-		   		opAlert('open', 'failed to create box, please try again.');
+		   		opAlert('open', 'failed to publish story.');
 		   		close_progress();
 		   	} else {
-		   		$('#title-box').val('');
-				$('#write-box').val('');
+		   		$('#cover').val('');
+				$('#write-story').val('');
+				opCreateStory('close');
 				close_progress();
-				window.location = '{{ url("/box") }}';
+				window.location = '{{ url("/compose/box/") }}'+'/'+data+'/designs';
 		   	}
 		   	//console.log(data);
 		})
@@ -46,19 +50,21 @@
 
 		return false;
 	}
-    $(document).ready(function() {
-		$('#title-box').keyup(function(event) {
+	$(document).ready(function() {
+		$('#progressbar').progressbar({
+			value: false,
+		});
+		$('#title-story').keyup(function(event) {
 			var length = $(this).val().length;
 			$('#title-lg').html(length);
 		});
-        $('#write-box').keyup(function(event) {
+		$('#write-story').keyup(function(event) {
 			var length = $(this).val().length;
 			$('#desc-lg').html(length);
-			
 		});
-    });
+	});
 </script>
-<form id="form-publish" method="post" action="javascript:void(0)" enctype="multipart/form-data" onsubmit="createBox()">
+<form id="form-publish" method="post" action="javascript:void(0)" enctype="multipart/form-data" onsubmit="publish()">
 	<div class="sc-header">
 		<div class="sc-place pos-fix">
 			<div class="col-700px">
@@ -72,7 +78,7 @@
 						<h3 class="ttl-head ttl-sekunder-color">Add Box</h3>
 					</div>
 					<div class="sc-col-3 txt-right">
-						<input type="submit" name="save" class="btn btn-main-color" value="Create" id="btn-publish">
+						<input type="submit" name="save" class="btn btn-main-color" value="Next" id="btn-publish">
 					</div>
 				</div>
 			</div>
@@ -82,46 +88,51 @@
 		<div class="main col-700px">
 			<div class="create-body edit">
 				<div class="create-mn">
-                    <div class="create-block">
-                        <div class="block-field place-tags">
-                            <div class="pan">
-                                <div class="left">
-                                    <p class="ttl">Box Title</p>
-                                </div>
-                                <div class="right">
-									<div class="count">
-                                        <span id="title-lg">0</span>/50
-                                    </div>
+					<div class="create-block">
+						<!--progress bar-->
+						<div class="loading mrg-bottom" id="progressbar"></div>
+						<div class="block-field">
+							<div class="pan">
+								<div class="left">
+									<p class="ttl">Title</p>
 								</div>
-                            </div>
-                            <div class="block-field">
-                                <input type="text" 
-								name="title" 
-								id="title-box" 
-								class="tg txt txt-main-color txt-box-shadow" 
-								placeholder="Title" 
-								maxlength="50" 
-								required="true">
-                            </div>
-                        </div>
-                        <div class="block-field">
-                            <div class="pan">
-                                <div class="left">
-                                    <p class="ttl">Box Description</p>
-                                </div>
-                                <div class="right">
-                                    <div class="count">
-                                        <span id="desc-lg">0</span>/250
-                                    </div>
-                                </div>
-                            </div>
-                            <textarea name="write-box"
-                            id="write-box"
-                            class="txt edit-text txt-main-color txt-box-shadow ctn ctn-main ctn-sans-serif"
-                            maxlength="250"
-                            placeholder="Description"></textarea>
-                        </div>
-                    </div>
+								<div class="right">
+									<div class="count">
+										<span id="title-lg">0</span>/50
+									</div>
+								</div>
+							</div>
+							<div class="block-field">
+								<input type="text" name="title" id="title-story" class="tg txt txt-main-color txt-box-shadow" placeholder="Such as Robot, Mobile Design etc." required="true" maxlength="50">
+							</div>
+						</div>
+						<div class="padding-5px"></div>
+						<div class="block-field">
+							<div class="pan">
+								<div class="left">
+									<p class="ttl">Descriptions</p>
+								</div>
+								<div class="right">
+									<div class="count">
+										<span id="desc-lg">0</span>/250
+									</div>
+								</div>
+							</div>
+							<textarea name="write-story" id="write-story" class="txt edit-text txt-main-color txt-box-shadow ctn ctn-main ctn-sans-serif" placeholder="Descriptions" maxlength="250"></textarea>
+						</div>
+						<div class="padding-5px"></div>
+						<div class="block-field place-tags">
+							<div class="pan">
+								<div class="left">
+									<p class="ttl">Tags</p>
+								</div>
+								<div class="right"></div>
+							</div>
+							<div class="block-field">
+								<input type="text" name="tags" id="tags-story" class="tg txt txt-main-color txt-box-shadow" placeholder="Tags1, Tags2, Tags N...">
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
