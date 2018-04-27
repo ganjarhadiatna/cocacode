@@ -372,18 +372,23 @@
       color: #fff; }
 
 .frame-guess {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 200;
   background-color: #fff; }
+  @media (max-width: 768px) {
+    .frame-guess {
+      height: auto; } }
   .frame-guess .grid-2x {
     display: grid;
     display: -ms-grid;
     grid-template-columns: 1fr 1fr;
     -ms-grid-columns: 1fr 1fr; }
+    @media (max-width: 768px) {
+      .frame-guess .grid-2x {
+        display: block; } }
     .frame-guess .grid-2x .grid-1 {
       position: relative;
       width: 100%;
@@ -391,18 +396,27 @@
       background-color: #ad081b;
       grid-column: 1;
       -ms-grid-column: 1; }
+      @media (max-width: 768px) {
+        .frame-guess .grid-2x .grid-1 {
+          height: 500px; } }
     .frame-guess .grid-2x .grid-2 {
       position: relative;
       width: 100%;
       height: calc(100vh - 50px);
       grid-column: 2;
       -ms-grid-column: 2; }
+      @media (max-width: 768px) {
+        .frame-guess .grid-2x .grid-2 {
+          height: 500px; } }
   .frame-guess .bottom {
     position: relative;
     width: 100%;
     height: 50px;
     text-align: center;
     cursor: default; }
+    @media (max-width: 768px) {
+      .frame-guess .bottom {
+        height: auto; } }
     .frame-guess .bottom ul li {
       position: relative;
       list-style: none;

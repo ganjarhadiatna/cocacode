@@ -36,6 +36,7 @@ class ImageModel extends Model
             'idboxs'
         )
         ->where('idboxs', $idboxs)
+        ->orderBy('image.idimage','desc')
         ->get();
     }
     function scopeGetId($query, $id, $idboxs)
