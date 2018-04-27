@@ -26,7 +26,7 @@ class ImageModel extends Model
         ->where('idimage', $idimage)
         ->value('image');
     }
-    function scopeGetAllImage($query, $idboxs)
+    function scopeGetAllImage($query, $idboxs, $stt)
     {
         return DB::table('image')
         ->select(
@@ -36,7 +36,7 @@ class ImageModel extends Model
             'idboxs'
         )
         ->where('idboxs', $idboxs)
-        ->orderBy('image.idimage','desc')
+        ->orderBy('image.idimage',$stt)
         ->get();
     }
     function scopeGetId($query, $id, $idboxs)

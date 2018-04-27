@@ -26,7 +26,7 @@ class BoxsController extends Controller
                 
                 $getStory = BoxsModel::GetBoxs($id);
                 $getImage = ImageModel::GetImage($idimage);
-                $getAllImage = ImageModel::GetAllImage($id);
+                $getAllImage = ImageModel::GetAllImage($id, 'desc');
 
                 $newStory = BoxsModel::PagRelatedBoxs(20, $id);
 
@@ -66,7 +66,7 @@ class BoxsController extends Controller
             
             $getStory = BoxsModel::GetBoxs($id);
             $getImage = ImageModel::GetImage($idimage);
-            $getAllImage = ImageModel::GetAllImage($id);
+            $getAllImage = ImageModel::GetAllImage($id,'desc');
             
             $newStory = BoxsModel::PagRelatedBoxs(20, $id);
             

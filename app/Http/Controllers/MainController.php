@@ -96,7 +96,7 @@ class MainController extends Controller
     }
     function composeImage($idboxs)
     {
-        $image = ImageModel::GetAllImage($idboxs);
+        $image = ImageModel::GetAllImage($idboxs,'asc');
         return view('compose.image', [
             'title' => 'Add Designs',
             'path' => 'compose',
