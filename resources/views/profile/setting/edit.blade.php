@@ -106,7 +106,7 @@
 								<div class="foto image image-200px image-circle" id="place-picture" style="background-image: url({{ asset('/profile/photos/'.$p->foto) }});"></div>
 								<input type="file" name="change-picture" id="change-picture" onchange="loadFoto()">
 								<label for="change-picture">
-									<div class="btn btn-sekunder-color" id="btn-save-foto" type="button">
+									<div class="btn btn-sekunder-color btn-radius" id="btn-save-foto" type="button">
 										<span class="fas fa-lg fa-camera"></span>
 									</div>
 								</label>
