@@ -1,195 +1,115 @@
-@extends('layout.index')
-@section('title',$title)
-@section('path', $path)
-@section('content')
-<div class="frame-guess">
-	<div class="block bdr-bottom">
-		<div class="logo" style="background-image: url('{{ asset('/img/CocaCode/3.png') }}')"></div>
-		<div class="ttl ctn-main-font ctn-small ctn-center padding-10px">
-			It's a place for Designers show and sale their work.
+<?php use App\ProfileModel; ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Coca Code</title>
+	<meta charset=utf-8>
+    <meta name=description content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+
+	<!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- ICON -->
+    <link href="{{ asset('/img/C/6.png') }}" rel='SHORTCUT ICON'/>
+
+	<!-- SASS -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/css/fontawesome-all.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('sass/main.css') }}">
+
+	<!-- JS -->
+	<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+</head>
+<body>
+	<div class="frame-guess">
+		<div class="grid-2x">
+			<div class="grid-1">
+				<div class="bl detail col-400px">
+					<ul>
+						<li>
+							<div class="icn fas fa-lg fa-box-open"></div>
+							<div class="ttl ctn-main-font ctn-18px">Put your designs on a boxs.</div>
+						</li>
+						<li>
+							<div class="icn fas fa-lg fa-lightbulb"></div>
+							<div class="ttl ctn-main-font ctn-18px">Collecting much ideas.</div>
+						</li>
+						<li>
+							<div class="icn fas fa-lg fa-users"></div>
+							<div class="ttl ctn-main-font ctn-18px">Creat relations and hired.</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="grid-2">
+				<div class="bl sign col-400px">
+					<div class="image image-all" style="background-image: url('{{ asset('/img/CocaCode/3.png') }}')"></div>
+					<div class="ttl ctn-main-font ctn-20px ctn-sek-color padding-20px">
+						It's a place for Designers.
+					</div>
+					<div class="padding-10px"></div>
+					<div class="banner">
+						<div class="cover">
+							<div class="title">
+								<div class="ttl ctn-main-font ctn-14px ctn-bold ctn-sek-color padding-20px">
+									Join Pictlr Today.
+								</div>
+								<div class="frame-info width-all">
+									<a href="{{ url('/login') }}">
+										<button class="mrg-bottom create btn btn-sekunder-color" id="compose">
+											<span class="ttl-post">Login</span>
+										</button>
+									</a>
+									<a href="{{ url('/register') }}">
+										<button class="btn btn-main-color" id="compose">
+											<span class="ttl-post">Register</span>
+										</button>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bottom">
+			<ul class="ctn-main-font ctn-14px">
+				<li>
+					<a href="{{ url('/') }}">Home Feeds</a>
+				</li>
+				<li>
+					<a href="{{ url('/fresh') }}">Fresh</a>
+				</li>
+				<li>
+					<a href="{{ url('/trending') }}">Trending</a>
+				</li>
+				<li>
+					<a href="{{ url('/popular') }}">Populars</a>
+				</li>
+				<li>
+					<a href="#">About Us</a>
+				</li>
+				<li>
+					<a href="#">Privacy</a>
+				</li>
+				<li>
+					<a href="#">Terms</a>
+				</li>
+				<li>
+					<a href="#">Policy</a>
+				</li>
+				<li>
+					<a href="#">FAQ</a>
+				</li>
+				<li>
+					<a href="#">Jobs</a>
+				</li>
+				<li>
+					<a href="#">Help</a>
+				</li>
+			</ul>
 		</div>
 	</div>
-	<div class="banner bdr-bottom">
-		<div class="cover">
-			<div class="title">
-				<div class="padding-bottom-15px">
-					<h2>Join Coca Code Today.</h2>
-				</div>
-				<div class="frame-info width-all">
-					<a href="{{ url('/login') }}">
-						<button class="mrg-bottom create btn btn-sekunder-color" id="compose">
-							<span class="ttl-post">Login</span>
-						</button>
-					</a>
-					<a href="{{ url('/register') }}">
-						<button class="btn btn-main-color" id="compose">
-							<span class="ttl-post">Register</span>
-						</button>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="block bdr-bottom">
-		<div class="ttl ctn-main-font ctn-small ctn-center padding-20px">What you can do?</div>
-		<div class="frame-info">
-			<div class="pos top">
-				<div class="icn fa fa-lg fa-pencil-alt"></div>
-			</div>
-			<div class="mid">
-				Create and Share a Designs.
-			</div>
-		</div>
-		<div class="frame-info">
-			<div class="pos top">
-				<div class="icn fas fa-lg fa-box-open"></div>
-			</div>
-			<div class="mid">
-				Save Much Designs on a Boxs.
-			</div>
-		</div>
-		<div class="frame-info">
-			<div class="pos top">
-				<div class="icn far fa-lg fa-comments"></div>
-			</div>
-			<div class="mid">
-				Join the Conversations.
-			</div>
-		</div>
-	</div>
-	<div class="block bdr-bottom">
-		<div class="ttl ctn-main-font ctn-small ctn-center padding-20px">What would you get?</div>
-		<div>
-			<div class="frame-info">
-				<div class="pos top">
-					<div class="icn fas fa-lg fa-lightbulb"></div>
-				</div>
-				<div class="mid">
-					Finding Ideas.
-				</div>
-			</div>
-			<div class="frame-info">
-				<div class="pos top">
-					<div class="icn fas fa-lg fa-images"></div>
-				</div>
-				<div class="mid">
-					Collecting Images.
-				</div>
-			</div>
-			<div class="frame-info">
-				<div class="pos top">
-					<div class="icn fas fa-lg fa-newspaper"></div>
-				</div>
-				<div class="mid">
-					Geting News Feeds.
-				</div>
-			</div>
-			<div class="frame-info">
-				<div class="pos top">
-					<div class="icn fas fa-lg fa-users"></div>
-				</div>
-				<div class="mid">
-					Create Relations.
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="block bdr-bottom">
-		<div class="ttl ctn-main-font ctn-small ctn-center padding-20px">Start with it, for example.</div>
-		<div class="frame-info">
-			<div class="pos top">
-				<div class="icn fas fa-lg fa-clock"></div>
-			</div>
-			<div class="mid">
-				Fresh Stories
-				<div class="padding-10px"></div>
-				<a href="{{ url('/fresh') }}">
-					<input type="button" class="btn btn-main-color" value="View More">
-				</a>
-			</div>
-		</div>
-		<div class="frame-info">
-			<div class="pos top">
-				<div class="icn fas fa-lg fa-fire"></div>
-			</div>
-			<div class="mid">
-				Populars Stories
-				<div class="padding-10px"></div>
-				<a href="{{ url('/popular') }}">
-					<input type="button" class="btn btn-main-color" value="View More">
-				</a>
-			</div>
-		</div>
-		<div class="frame-info">
-			<div class="pos top">
-				<div class="icn fas fa-lg fa-bolt"></div>
-			</div>
-			<div class="mid">
-				Trending Stories
-				<div class="padding-10px"></div>
-				<a href="{{ url('/trending') }}">
-					<input type="button" class="btn btn-main-color" value="View More">
-				</a>
-			</div>
-		</div>
-	</div>
-	<div class="banner bdr-bottom">
-		<div class="cover">
-			<div class="title">
-				<div class="padding-bottom-15px">
-					<h2>So, let's get started.</h2>
-				</div>
-				<div class="frame-info width-all">
-					<a href="{{ url('/login') }}">
-						<button class="mrg-bottom create btn btn-sekunder-color" id="compose">
-							<span class="ttl-post">Login</span>
-						</button>
-					</a>
-					<a href="{{ url('/register') }}">
-						<button class="btn btn-main-color" id="compose">
-							<span class="ttl-post">Register</span>
-						</button>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="block bdr-top bdr-bottom">
-		<div class="ttl ctn-main-font ctn-small ctn-center padding-20px">Find Us on.</div>
-		<div>
-			<div class="frame-info">
-				<div class="pos top">
-					<div class="icn fab fa-lg fa-facebook-f"></div>
-				</div>
-				<div class="mid">
-					Facebook
-				</div>
-			</div>
-			<div class="frame-info">
-				<div class="pos top">
-					<div class="icn fab fa-lg fa-instagram"></div>
-				</div>
-				<div class="mid">
-					Instagram
-				</div>
-			</div>
-			<div class="frame-info">
-				<div class="pos top">
-					<div class="icn fab fa-lg fa-twitter"></div>
-				</div>
-				<div class="mid">
-					Twitter
-				</div>
-			</div>
-			<div class="frame-info">
-				<div class="pos top">
-					<div class="icn fab fa-lg fa-google"></div>
-				</div>
-				<div class="mid">
-					Google
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-@endsection
+</body>
+</html>

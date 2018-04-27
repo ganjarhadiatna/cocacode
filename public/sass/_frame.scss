@@ -6,7 +6,7 @@
 	margin: 0 5px;
 	display: inline-block;
 	background-color: $sek-color;
-	border-radius: 5px;
+	border-radius: 7.5px;
 	&:hover {
 		background-color: rgba(225,225,225,0.54);
 		.bot-tool {
@@ -96,7 +96,7 @@
 			}
 			img {
 				width: 100%;
-				border-radius: 5px;
+				border-radius: 7.5px;
 			}
 		}
 	}
@@ -138,69 +138,87 @@
 }
 
 .frame-guess {
-	position: relative;
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-attachment: fixed;
-	.block {
-		position: relative;
-		padding: 50px 0;
-		text-align: center;
-		&.theme-1 {
-			background-color: rgba(0,0,0,0.1);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 200;
+	background-color: #fff;
+	.grid-2x {
+		@include grid_2x(1fr, 1fr);
+		.grid-1 {
+			position: relative;
+			width: 100%;
+			height: calc(100vh - 50px);
+			background-color: $min-color;
+			@include column_1();
 		}
-		&.theme-2 {
-			background-color: $sek-color;
-		}
-		.logo {
-			width: 500px;
-			@media (max-width: $max-width) {
-				width: 90%;
-			}
-		}
-		.ttl {
-			color: $txt-sek-color;
+		.grid-2 {
+			position: relative;
+			width: 100%;
+			height: calc(100vh - 50px);
+			@include column_2();
 		}
 	}
-	.ttl {
-		color: $txt-sek-color;
-	}
-	.banner {
+	.bottom {
 		position: relative;
 		width: 100%;
-		padding: 50px 0;
-		background-size: 100%;
-		background-repeat: no-repeat;
+		height: 50px;
 		text-align: center;
-		@include bdr_top_bottom();
-	}
-	.cover {
-		position: relative;
-		background-color: $sek-color;
-		width: 500px;
-		margin: auto;
-		padding: 30px 30px 50px 30px;
-		border-radius: 5px;
-		color: $txt-sek-color;
-		@media (max-width: $max-width) {
-			width: calc(100% - 40px);
-			padding: 30px 20px 50px 20px;
-			border-radius: 0;
+		cursor: default;
+		ul {
+			li {
+				position: relative;
+				list-style: none;
+				display: inline-block;
+				a {
+					display: block;
+					padding: 0 15px;
+					height: 50px;
+					line-height: 50px;
+					color: $txt-sek-color;
+					font-weight: 600;
+					&:hover {
+						color: $txt-min-color;
+						background-color: #f0f0f0;
+					}
+				}
+			}
 		}
+	}
+	.detail {
+		@include post_center();
 		.ttl {
-			text-align: center;
-			color: $txt-sek-color;
-			.mn-title {
+			color: #fff;
+		}
+		ul {
+			li {
 				position: relative;
-				line-height: 1.5;
-				font-size: 28pt;
+				list-style: none;
+				padding: 20px 0;
+				@include grid_2x(60px, 1fr);
+				.icn {
+					width: 40px;
+					line-height: 25px;
+					color: #fff;
+					text-align: center;
+					@include column_1();
+				}
+				.ttl {
+					@include column_2();
+				}
 			}
-			.sb-title {
-				position: relative;
-				font-size: 22pt;
-				font-weight: 900;
-			}
+		}
+	}
+	.sign {
+		@include post_center();
+		text-align: center;
+		.image {
+			position: relative;
+			margin: auto;
+			width: 300px;
+			height: 80px;
 		}
 	}
 }

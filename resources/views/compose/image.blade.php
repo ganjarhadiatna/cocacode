@@ -133,7 +133,7 @@
 								action="javascript:void(0)"
 								enctype="multipart/form-data"
 								>
-								<input type="file" name="get-image" class="hide-input-file" id="get-image" onchange="getImage()">
+								<input type="file" name="get-image" accept="image/*" class="hide-input-file" id="get-image" onchange="getImage()">
 							</form>
 							<label for="get-image">
 								<span class="btn btn-div btn-sekunder-color btn-radius">
