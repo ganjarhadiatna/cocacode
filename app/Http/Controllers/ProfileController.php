@@ -18,13 +18,13 @@ class ProfileController extends Controller
 	{
 		$id = Auth::id();
         $profile = ProfileModel::UserData($id);
-        $userStory = BoxsModel::PagUserBoxs(20, $id);
+        $userBoxs = BoxsModel::DetailBoxs(20, $id);
         return view('profile.boxs', [
             'title' => 'User Profile',
             'path' => 'profile',
-            'nav' => 'design',
+            'nav' => 'boxs',
             'profile' => $profile,
-            'userStory' => $userStory
+            'userBoxs' => $userBoxs
         ]);
 	}
     function designs($id)
